@@ -9,7 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "koa": "^2.13.4"
-  }
+  "dependencies": {}
 }
