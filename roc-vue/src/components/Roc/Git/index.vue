@@ -1,15 +1,15 @@
 <template>
   <div>
-    <svg-icon icon-class="question" @click="goto" />
+    <svg-icon icon-class="github" @click="goto" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'RuoYiDoc',
+  name: 'RocGit',
   data() {
     return {
-      url: 'http://doc.ruoyi.vip/ruoyi-vue'
+      url: 'https://gitee.com/rocyuan666/roc-manage-system'
     }
   },
   methods: {
