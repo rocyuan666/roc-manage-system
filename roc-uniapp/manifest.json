@@ -1,6 +1,6 @@
 {
     "name" : "大鹏管理系统",
-    "appid" : "__UNI__3D0DC28",
+    "appid" : "__UNI__831713C",
     "description" : "",
     "versionName" : "1.0.1",
     "versionCode" : "100",
@@ -50,7 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxb37d39a274a478f2",
         "setting" : {
             "urlCheck" : false
         },
