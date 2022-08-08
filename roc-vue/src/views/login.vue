@@ -56,7 +56,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2018-2022 ruoyi.vip All Rights Reserved.</span>
+      <span>Copyright © 2018-2022 All Rights Reserved.</span>
     </div>
   </div>
 </template>
@@ -167,7 +167,7 @@ export default {
 .title {
   margin: 0px auto 30px auto;
   text-align: center;
-  color: #707070;
+  color: #333;
 }
 
 .login-form {
@@ -175,6 +175,7 @@ export default {
   background: #ffffff;
   width: 400px;
   padding: 25px 25px 5px 25px;
+  opacity: 0.9;
   .el-input {
     height: 38px;
     input {
