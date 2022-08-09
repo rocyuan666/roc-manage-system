@@ -7,6 +7,8 @@
 
 大鹏管理系统，基于若依系统的前后端分离管理系统开发框架。rocyuan网站：[https://luojing.top](https://luojing.top)，大鹏一日同风起，扶摇直上九万里。
 
+[github](https://github.com/rocyuan666/roc-manage-system) 与 [gitee](https://gitee.com/rocyuan666/roc-manage-system)，两仓库同步提交。
+
 #### 目录
 * roc: java后端项目代码
 * roc-vue： vue项目代码
