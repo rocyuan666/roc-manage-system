@@ -3,19 +3,12 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {};
   },
-  onLoad() {
-    this.getBannerImg();
-  },
-  methods: {
-    async getBannerImg() {
-      const res = await this.$api.getBannerData();
-      console.log(res);
-    }
-  }
+  methods: {}
 };
 </script>
 

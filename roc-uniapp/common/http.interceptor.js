@@ -56,7 +56,13 @@ const install = (Vue, vm) => {
     if (res.code == 200) {
       // 如果把originalData设置为了true，这里return回什么，this.$roc.post的then回调中就会得到什么
       return res;
-    } else return false;
+    } else {
+      uni.showToast({
+        icon: "none",
+        title: res.msg
+      })
+      return false;
+    }
   }
 }
 
