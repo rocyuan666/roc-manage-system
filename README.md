@@ -12,7 +12,7 @@
 #### 目录
 * roc: java后端项目代码
 * roc-vue： vue项目代码
-* roc-uniapp： uni-app项目代码
+* roc-uniapp： uni-app项目代码（正在开发...）
 * script：脚本工具
 
 ## 内置功能
