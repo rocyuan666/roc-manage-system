@@ -1,4 +1,6 @@
-const { devBaseUrl } = require("./common/config.js");
+const {
+  devBaseUrl
+} = require('./common/config.js')
 
 module.exports = {
   devServer: {

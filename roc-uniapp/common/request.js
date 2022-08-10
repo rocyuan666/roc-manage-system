@@ -1,62 +1,41 @@
-import http from "@/utils/request/index.js"
-
-/**
- * 混入默认个性化配置
- * @param {*} config 
- * @returns 
- */
-function mixinCustom (config) {
-  config.custom = Object.assign({
-    auth: true,
-    toast: true,
-    catch: true,
-    loading: true
-  }, config.custom || {});
-  return config;
-}
-
 /**
  * 格式化get请求url参数，将对象解析为字符串
- * @param {*} url 
- * @param {*} params 
- * @returns 
+ * @param {*} url
+ * @param {*} params
+ * @returns
  */
-function urlFormater (url, params) {
+function urlFormater(url, params) {
   if (params) {
-    let paramList = [];
+    let paramList = []
     for (let key in params) {
       paramList.push(key + '=' + params[key])
     }
     return url.indexOf('?') > -1 ? (url + '&' + paramList.join('&')) : (url + '?' + paramList.join('&'))
   }
-  return url;
+  return url
 }
 
 const request = {
   // post提交
-  post (url, params, config = {}) {
-    // config = mixinCustom(config)
-    return http.post(url, params, config);
+  post(url, params, header = {}) {
+    return uni.$roc.http.post(url, params, header)
   },
   // get提交
-  get (url, params, config = {}) {
-    // config = mixinCustom(config)
+  get(url, params, header = {}) {
     let path = urlFormater(url, params)
-    return http.get(path, config);
+    return uni.$roc.http.get(path, header)
   },
 
   // put提交
-  put (url, params, config = {}) {
-    // config = mixinCustom(config)
-    return http.put(url, params, config);
+  put(url, params, header = {}) {
+    return uni.$roc.http.put(url, params, header)
   },
 
   // delete提交
-  delete (url, params, config = {}) {
-    // config = mixinCustom(config)
-    return http.delete(url, params, config);
+  delete(url, params, header = {}) {
+    return uni.$roc.http.delete(url, params, header)
   },
 
-};
+}
 
-export default request;
+export default request

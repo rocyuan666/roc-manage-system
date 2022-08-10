@@ -43,7 +43,7 @@ const store = new Vuex.Store({
     vuex_name: 'rocyuan',
   },
   mutations: {
-    $uStore(state, payload) {
+    $rocStore(state, payload) {
       // 判断是否多层级调用，state中为对象存在的情况，诸如user.info.score = 1
       let nameArr = payload.name.split('.');
       let saveKey = '';

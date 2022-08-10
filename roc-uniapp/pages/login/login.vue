@@ -3,22 +3,22 @@
 </template>
 
 <script>
-import { login } from '@/api/login.js';
+import { login } from '@/api/login.js'
 export default {
   data() {
-    return {};
+    return {}
   },
   onLoad() {
-    this.handleLogin();
+    this.handleLogin()
   },
   methods: {
     async handleLogin() {
-      const sendObj = {};
-      const { data } = await login();
-      console.log(data);
-    }
-  }
-};
+      const sendObj = {}
+      const { data } = await login()
+      console.log(data)
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>
