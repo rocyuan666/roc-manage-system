@@ -7,10 +7,6 @@ import store from '@/store'
 import rocUniappUtils from '@/roc-uniapp-utils'
 Vue.use(rocUniappUtils)
 
-// vuex简写
-import vuexStore from '@/store/$roc.mixin.js'
-Vue.mixin(vuexStore)
-
 Vue.config.productionTip = false
 
 App.mpType = 'app'
