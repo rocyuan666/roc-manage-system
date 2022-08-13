@@ -11,6 +11,8 @@
 
 ## 预览
 
+` 账号：admin 密码：admin123 `
+
 vue预览地址：[http://rms.luojing.top](http://rms.luojing.top)
 
 uniapp多平台预览：敬请期待...
