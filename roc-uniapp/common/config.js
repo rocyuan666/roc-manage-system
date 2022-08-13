@@ -8,5 +8,5 @@ module.exports = {
   // 开发环境地址（开发环境使用了代理解决跨域，不需要的话更改为接口地址）
   devBaseUrl: '/roc-api',
   // 生产环境地址
-  proBaseUrl: 'http://localhost:18080'
+  proBaseUrl: 'http://rms.luojing.top:18080'
 }
