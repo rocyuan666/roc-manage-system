@@ -62,7 +62,8 @@ import {
 import debounce from './libs/function/debounce.js'
 // 节流方法
 import throttle from './libs/function/throttle.js'
-
+// 缓存
+import storage from './libs/function/storage.js'
 
 // 配置信息
 import config from './libs/config/config.js'
@@ -105,6 +106,11 @@ const $roc = {
   zIndex,
   debounce,
   throttle,
+  storage,
+  setStorage: storage.set,
+  getStorage: storage.get,
+  removeStorage: storage.remove,
+  clearStorage: storage.clear,
 }
 
 // $roc挂载到uni对象上

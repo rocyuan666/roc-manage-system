@@ -9,7 +9,7 @@ module.exports = {
     // 这里配置了跨域及代理只针对开发环境生效
     proxy: {
       [devBaseUrl]: {
-        target: `http://localhost:18080`,
+        target: `http://rms.luojing.top:18080`,
         ws: true,
         changeOrigin: true,
         pathRewrite: {

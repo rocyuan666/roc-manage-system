@@ -1,25 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import app from './modules/app'
-import dict from './modules/dict'
-import user from './modules/user'
-import tagsView from './modules/tagsView'
-import permission from './modules/permission'
-import settings from './modules/settings'
 import getters from './getters'
 
 Vue.use(Vuex)
 
+// 不希望有命名空间的vuex模块
+const namespacedFalseList = ['permission', 'user']
+
+const modules = {};
+const files = require.context('./modules', false, /\.js$/)
+files.keys().forEach((url) => {
+  const key = url.replace(/(modules\.|\/|\.|js)/g, '')
+  modules[key] = {
+    ...files(url).default,
+    namespaced: !namespacedFalseList.includes(key),
+  }
+})
+
 const store = new Vuex.Store({
-  modules: {
-    app,
-    dict,
-    user,
-    tagsView,
-    permission,
-    settings
-  },
-  getters
+  modules,
+  getters,
 })
 
 export default store

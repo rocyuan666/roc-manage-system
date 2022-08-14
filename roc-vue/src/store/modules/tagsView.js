@@ -63,7 +63,7 @@ const mutations = {
       }
     }
   },
-  
+
   DEL_RIGHT_VIEWS: (state, view) => {
     const index = state.visitedViews.findIndex(v => v.path === view.path)
     if (index === -1) {
@@ -200,7 +200,6 @@ const actions = {
 }
 
 export default {
-  namespaced: true,
   state,
   mutations,
   actions

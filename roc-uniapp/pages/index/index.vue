@@ -7,6 +7,10 @@ export default {
   data() {
     return {}
   },
+  onLoad() {
+    // 工具集
+    console.log(this.$roc)
+  },
   methods: {},
 }
 </script>

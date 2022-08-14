@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      login: 'user/Login',
+      login: 'Login',
     }),
     async handleLogin() {
       try {
