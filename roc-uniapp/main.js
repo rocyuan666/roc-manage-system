@@ -2,12 +2,14 @@
 import Vue from 'vue'
 import App from './App'
 import store from '@/store'
+import theme from '@/mixins/theme.g.js'
 
 // 剥离uView中js工具
 import rocUniappUtils from '@/roc-uniapp-utils'
 Vue.use(rocUniappUtils)
 
 Vue.config.productionTip = false
+Vue.mixin(theme)
 
 App.mpType = 'app'
 

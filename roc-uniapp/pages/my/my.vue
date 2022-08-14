@@ -1,5 +1,14 @@
 <template>
-  <view class="my-container">我的</view>
+  <view class="my-container">
+    <uni-nav-bar
+      :fixed="true"
+      :shadow="true"
+      :color="navbar.textColor"
+      :backgroundColor="navbar.bgColor"
+      :statusBar="true"
+      title="我的"
+    />
+  </view>
 </template>
 
 <script>
@@ -7,7 +16,7 @@ export default {
   data() {
     return {}
   },
-  methods: {}
+  methods: {},
 }
 </script>
 

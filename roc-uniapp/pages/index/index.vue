@@ -1,5 +1,14 @@
 <template>
-  <view class="index-container">首页</view>
+  <view class="index-container">
+    <uni-nav-bar
+      :fixed="true"
+      :shadow="true"
+      :color="navbar.textColor"
+      :backgroundColor="navbar.bgColor"
+      :statusBar="true"
+      title="首页"
+    />
+  </view>
 </template>
 
 <script>

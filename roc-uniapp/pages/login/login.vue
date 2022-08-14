@@ -1,5 +1,15 @@
 <template>
-  <view class="login-container"><button type="primary" size="mini" @click="handleLogin">登录</button></view>
+  <view class="login-container">
+    <uni-nav-bar
+      :fixed="true"
+      :shadow="true"
+      :color="navbar.textColor"
+      :backgroundColor="navbar.bgColor"
+      :statusBar="true"
+      title="登录"
+    />
+    <button type="primary" size="mini" @click="handleLogin">登录</button>
+  </view>
 </template>
 
 <script>

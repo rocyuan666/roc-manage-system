@@ -29,6 +29,7 @@
     "navigationBarTitleText": "首页",
     "navigationBarBackgroundColor": "#1890ff",
     "backgroundColor": "#f8f8f8",
+    "navigationStyle": "custom",
     "app-plus": {
       "background": "#efeff4"
     }
