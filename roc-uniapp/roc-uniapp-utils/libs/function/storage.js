@@ -52,7 +52,7 @@ module.exports = {
         if (def) {
           return def
         } else {
-          return false
+          return ""
         }
       }
     }
@@ -61,7 +61,7 @@ module.exports = {
       return res
     }
     if (def == undefined || def == "") {
-      def = false
+      def = ""
     }
     return def
   },
