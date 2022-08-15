@@ -1,24 +1,21 @@
 <template>
   <view class="index-container">
-    <uni-nav-bar
-      :fixed="true"
-      :shadow="true"
-      :color="navbar.textColor"
-      :backgroundColor="navbar.bgColor"
-      :statusBar="true"
-      title="首页"
-    />
+    <roc-navbar title="首页"></roc-navbar>
+    <view>首页</view>
   </view>
 </template>
 
 <script>
+import { tokenKey } from '@/common/config.js'
+
 export default {
   data() {
     return {}
   },
-  onLoad() {
+  onShow() {
+    if (!this.$roc.getStorage(tokenKey)) this.$roc.route('/pages/login/login')
     // 工具集
-    console.log(this.$roc)
+    // console.log(this.$roc)
   },
   methods: {},
 }

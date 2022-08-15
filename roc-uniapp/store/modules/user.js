@@ -1,13 +1,17 @@
 import {
   login
 } from '@/api/login.js'
+import {
+  tokenKey
+} from '@/common/config.js'
 
 const state = {
-  token: ''
+  token: uni.$roc.getStorage(tokenKey)
 }
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
+    uni.$roc.setStorage(tokenKey, token)
   }
 }
 const actions = {

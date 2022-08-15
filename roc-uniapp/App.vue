@@ -16,4 +16,10 @@ export default {
 page {
   background-color: #f5f5f5;
 }
+button {
+  transition: all 0.3s;
+  &:active {
+    transform: scale(0.96);
+  }
+}
 </style>

@@ -1,20 +1,16 @@
 <template>
-  <view class="my-container">
-    <uni-nav-bar
-      :fixed="true"
-      :shadow="true"
-      :color="navbar.textColor"
-      :backgroundColor="navbar.bgColor"
-      :statusBar="true"
-      title="我的"
-    />
-  </view>
+  <view class="my-container"><roc-navbar title="我的"></roc-navbar></view>
 </template>
 
 <script>
+import { tokenKey } from '@/common/config.js'
+
 export default {
   data() {
     return {}
+  },
+  onShow() {
+    if (!this.$roc.getStorage(tokenKey)) this.$roc.route('/pages/login/login')
   },
   methods: {},
 }

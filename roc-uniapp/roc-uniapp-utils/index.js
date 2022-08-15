@@ -115,6 +115,7 @@ const $roc = {
 
 // $roc挂载到uni对象上
 uni.$roc = $roc
+global.$roc = $roc
 
 const install = Vue => {
   Vue.mixin(mixin)

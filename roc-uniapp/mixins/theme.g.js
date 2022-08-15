@@ -5,8 +5,11 @@ export default {
   data() {
     return {
       navbar: {
-        bgColor: "#1890ff",
-        textColor: "#fff"
+        color: "#fff",
+        backgroundColor: "#1890ff",
+        fixed: true,
+        shadow: true,
+        statusBar: true
       }
     }
   }
