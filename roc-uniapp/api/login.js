@@ -14,7 +14,3 @@ export const logout = (params) => request.post('/logout', params)
 
 // 获取验证码
 export const getCodeImg = (params) => request.get('/captchaImage', params)
-
-function a() {
-
-}

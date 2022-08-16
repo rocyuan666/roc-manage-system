@@ -26,7 +26,6 @@ const actions = {
         uuid: userInfo.uuid,
       }
       login(sendObj).then((res) => {
-        console.log(res, 'login后信息，设置token信息')
         commit('SET_TOKEN', res.token)
         resolve()
       }).catch((error) => {
