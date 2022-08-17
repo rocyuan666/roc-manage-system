@@ -1,5 +1,6 @@
 import {
-  login
+  login,
+  logout
 } from '@/api/login.js'
 import {
   tokenKey
@@ -32,11 +33,24 @@ const actions = {
         reject(error)
       })
     })
-  }
+  },
+  LogOut({
+    commit,
+    state
+  }) {
+    return new Promise((resolve, reject) => {
+      logout(state.token).then(() => {
+        commit('SET_TOKEN', '')
+        uni.$roc.clearStorage()
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
 }
 
 export default {
-  namespaced: true,
   state,
   mutations,
   actions

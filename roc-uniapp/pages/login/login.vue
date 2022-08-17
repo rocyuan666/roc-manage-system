@@ -54,8 +54,8 @@ export default {
     return {
       codeUrl: '',
       loginForm: {
-        username: 'admin',
-        password: 'admin123',
+        username: '',
+        password: '',
         rememberMe: false,
         code: '',
         uuid: '',
@@ -107,9 +107,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 page {
-  background-color: #fff;
   .login-container {
     background: url(../../static/images/login-bg.jpg) no-repeat;
     background-size: 100% 360rpx;

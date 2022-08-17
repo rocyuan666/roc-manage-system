@@ -33,7 +33,7 @@ const install = (Vue, vm) => {
   // 请求拦截，配置Token等参数
   vm.$roc.http.interceptor.request = (config) => {
     // config.header.Token = 'xxxxxx'
-    config.header['Authorization'] = `Bearer${uni.$roc.getStorage(tokenKey)}`
+    config.header['Authorization'] = `Bearer ${uni.$roc.getStorage(tokenKey)}`
 
     // 方式一，存放在vuex的token，假设使用了uView封装的vuex方式
     // config.header.token = vm.token
@@ -58,11 +58,11 @@ const install = (Vue, vm) => {
       // 如果把originalData设置为了true，这里return回什么，this.$roc.post的then回调中就会得到什么
       return res
     } else if (res.code === 401) {
-      // uni.$roc.toast("无效的会话，或者会话已过期，请重新登录。")
-      // uni.$roc.clearStorage()
-      // setTimeout(() => {
-      //   uni.$roc.route("/pages/login/login")
-      // }, 500)
+      uni.$roc.toast("无效的会话，或者会话已过期，请重新登录。")
+      uni.$roc.clearStorage()
+      setTimeout(() => {
+        uni.$roc.route("/pages/login/login")
+      }, 500)
       return false
     } else {
       uni.$roc.toast(res.msg)

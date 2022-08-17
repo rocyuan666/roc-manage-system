@@ -23,6 +23,12 @@
       "navigationBarTitleText": "登录",
       "enablePullDownRefresh": false
     }
+  }, {
+    "path": "pages/profile/profile",
+    "style": {
+      "navigationBarTitleText": "个人信息",
+      "enablePullDownRefresh": false
+    }
   }],
   "globalStyle": {
     "navigationBarTextStyle": "white",

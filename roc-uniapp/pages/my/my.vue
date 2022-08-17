@@ -3,41 +3,19 @@
     <roc-navbar title="我的"></roc-navbar>
     <view class="my-info-box">
       <view class="header-img-box">
-        <image src="../../static/images/top_user_img.jpg" mode="widthFix"></image>
+        <image
+          :src="user.avatar == '' ? '../../static/images/top_user_img.jpg' : user.avatar"
+          mode="widthFix"
+        ></image>
       </view>
       <view class="info-box">
-        <view class="username">{{ user.userName }}</view>
-        <view class="sysid">系统ID：0986</view>
+        <view class="username">{{ user.nickName }}</view>
+        <view class="sysid">账号：{{ user.userName }}</view>
       </view>
-      <view class="btn-my-info">个人信息</view>
+      <view class="btn-my-info" @click="toPageProfile">个人信息</view>
     </view>
     <view class="profile-main">
-      <view class="img-box"><image src="../../static/images/zxpx-banner.png" mode=""></image></view>
       <view class="list-box">
-        <view class="row">
-          <image class="icon-img" src="../../static/images/wdbm.png" mode=""></image>
-          <view class="name">我的报名</view>
-          <view class="right">
-            <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
-          </view>
-        </view>
-        <view class="row">
-          <image class="icon-img" src="../../static/images/wdxx.png" mode=""></image>
-          <view class="name">我的消息</view>
-          <view class="right">
-            <view class="text">2</view>
-            <view class="dot"></view>
-            <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
-          </view>
-        </view>
-        <view class="row">
-          <image class="icon-img" src="../../static/images/wdtp.png" mode=""></image>
-          <view class="name">我的投票</view>
-          <view class="right">
-            <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
-          </view>
-        </view>
-        <!-- #ifdef APP-PLUS -->
         <view class="row" @click="clernCache">
           <image class="icon-img" src="../../static/images/qchc.png" mode=""></image>
           <view class="name">清除缓存</view>
@@ -46,16 +24,8 @@
             <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
           </view>
         </view>
-        <!-- #endif -->
-        <view class="row">
-          <image class="icon-img" src="../../static/images/fxghy.png" mode=""></image>
-          <view class="name">分享给好友</view>
-          <view class="right">
-            <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
-          </view>
-        </view>
-        <view class="row">
-          <image class="icon-img" src="../../static/images/fxghy.png" mode=""></image>
+        <view class="row" @click="handleExit">
+          <image class="icon-img" src="../../static/images/exit.png" mode=""></image>
           <view class="name">退出</view>
           <view class="right">
             <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
@@ -89,11 +59,28 @@ export default {
     if (!this.$roc.getStorage(tokenKey)) this.$roc.route('/pages/login/login')
   },
   methods: {
+    toPageProfile() {
+      this.$roc.route('/pages/profile/profile')
+    },
     getUser() {
       getUserProfile().then(response => {
         this.user = response.data
         this.roleGroup = response.roleGroup
         this.postGroup = response.postGroup
+      })
+    },
+    handleExit() {
+      const that = this
+      uni.showModal({
+        title: '退出',
+        content: '你确定要退出账号吗？',
+        success: function(res) {
+          if (res.confirm) {
+            that.$store.dispatch('LogOut').then(() => {
+              that.$roc.route('/pages/login/login')
+            })
+          }
+        },
       })
     },
     // 获取缓存
@@ -191,7 +178,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 page {
   .my-container {
     .status_bar {
@@ -241,21 +228,10 @@ page {
       }
     }
     .profile-main {
-      padding: 0 36rpx;
-      .img-box {
-        height: 180rpx;
-        margin: 36rpx 0;
-        border-radius: 10rpx;
-        overflow: hidden;
-        image {
-          display: block;
-          width: 100%;
-          height: 100%;
-        }
-      }
+      padding: 36rpx 24rpx;
       .list-box {
         background-color: #fff;
-        border-radius: 10rpx;
+        border-radius: 16rpx;
         padding: 20rpx 44rpx;
         .row {
           display: flex;
