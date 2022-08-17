@@ -1,22 +1,39 @@
+<!-- 
+ * @作者：rocyuan（袁鹏）
+ * @邮箱：rocyuan@luojing.top、rocyuan666@163.com
+ * @微信：rocyuan666
+ * @个人网站：https://luojing.top
+ -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <!-- 可自定义mate -->
+    <!-- <meta property="og:title" content="Title Here" /> -->
+    <!-- <meta property="og:url" content="http://www.example.com/" /> -->
+    <!-- <meta property="og:image" content="http://example.com/image.jpg" /> -->
+    <!-- <meta property="og:description" content="Description Here" /> -->
     <script>
-      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
-        CSS.supports('top: constant(a)'))
+      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS
+        .supports('top: constant(a)'))
       document.write(
         '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
         (coverSupport ? ', viewport-fit=cover' : '') + '" />')
     </script>
-    <title></title>
-    <!--preload-links-->
-    <!--app-context-->
+    <link rel="stylesheet" href="<%= BASE_URL %>static/index.<%= VUE_APP_INDEX_CSS_HASH %>.css" />
   </head>
   <body>
-    <div id="app">
-      <!--app-html-->
-    </div>
-    <script type="module" src="/main.js"></script>
+    <noscript>
+      <strong>Please enable JavaScript to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- script引入js：如引入“jquery”，在项目中可直接使用 $ -->
+    <!-- 注意：修改本文件后如果未生效请重新编译 -->
+    <!-- <script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.11.3.min.js"></script> -->
+    <!-- 生成的文件将自动注入 -->
   </body>
 </html>

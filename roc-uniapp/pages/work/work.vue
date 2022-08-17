@@ -10,7 +10,7 @@ export default {
     return {}
   },
   onShow() {
-    if (!this.$roc.getStorage(tokenKey)) this.$roc.route('/pages/login/login')
+    if (!this.$u.getStorage(tokenKey)) this.$u.route('/pages/login/login')
   },
   methods: {},
 }

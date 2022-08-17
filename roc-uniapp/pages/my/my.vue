@@ -56,11 +56,11 @@ export default {
     this.formatSize()
   },
   onShow() {
-    if (!this.$roc.getStorage(tokenKey)) this.$roc.route('/pages/login/login')
+    if (!this.$u.getStorage(tokenKey)) this.$u.route('/pages/login/login')
   },
   methods: {
     toPageProfile() {
-      this.$roc.route('/pages/profile/profile')
+      this.$u.route('/pages/profile/profile')
     },
     getUser() {
       getUserProfile().then(response => {
@@ -77,7 +77,7 @@ export default {
         success: function(res) {
           if (res.confirm) {
             that.$store.dispatch('LogOut').then(() => {
-              that.$roc.route('/pages/login/login')
+              that.$u.route('/pages/login/login')
             })
           }
         },
@@ -182,7 +182,7 @@ export default {
 page {
   .my-container {
     .status_bar {
-      background-color: $uni-primary;
+      background-color: $uni-color-primary;
     }
     .my-info-box {
       height: 192rpx;
@@ -190,7 +190,7 @@ page {
       align-items: center;
       justify-content: flex-end;
       padding: 0 38rpx;
-      background-color: $uni-primary;
+      background-color: $uni-color-primary;
       .header-img-box {
         width: 120rpx;
         height: 120rpx;

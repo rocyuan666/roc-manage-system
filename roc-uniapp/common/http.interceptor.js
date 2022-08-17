@@ -11,9 +11,9 @@ import {
 } from '@/common/config.js'
 
 const install = (Vue, vm) => {
-  vm.$roc.http.setConfig({
+  vm.$u.http.setConfig({
     baseUrl: process.env.NODE_ENV == 'development' ? devBaseUrl : proBaseUrl,
-    // 是否在拦截器中返回服务端的原始数据 如果将此值设置为true，拦截回调中将会返回服务端返回的所有数据response，而不是response.data 设置为true后，就需要在vm.$roc.http.interceptor.response进行多一次的判断，请打印查看具体值
+    // 是否在拦截器中返回服务端的原始数据 如果将此值设置为true，拦截回调中将会返回服务端返回的所有数据response，而不是response.data 设置为true后，就需要在vm.$u.http.interceptor.response进行多一次的判断，请打印查看具体值
     // originalData: false,
     // 设置为json，返回后会对数据进行一次JSON.parse()
     // dataType: 'json',
@@ -31,9 +31,9 @@ const install = (Vue, vm) => {
     }
   })
   // 请求拦截，配置Token等参数
-  vm.$roc.http.interceptor.request = (config) => {
+  vm.$u.http.interceptor.request = (config) => {
     // config.header.Token = 'xxxxxx'
-    config.header['Authorization'] = `Bearer ${uni.$roc.getStorage(tokenKey)}`
+    config.header['Authorization'] = `Bearer ${uni.$u.getStorage(tokenKey)}`
 
     // 方式一，存放在vuex的token，假设使用了uView封装的vuex方式
     // config.header.token = vm.token
@@ -51,21 +51,21 @@ const install = (Vue, vm) => {
     return config
   }
   // 响应拦截，判断状态码是否通过
-  vm.$roc.http.interceptor.response = (res) => {
+  vm.$u.http.interceptor.response = (res) => {
     // 如果把originalData设置为了true，这里得到将会是服务器返回的所有的原始数据
     // 判断可能变成了res.statueCode，或者res.data.code之类的，请打印查看结果
     if (res.code === 200) {
-      // 如果把originalData设置为了true，这里return回什么，this.$roc.post的then回调中就会得到什么
+      // 如果把originalData设置为了true，这里return回什么，this.$u.post的then回调中就会得到什么
       return res
     } else if (res.code === 401) {
-      uni.$roc.toast("无效的会话，或者会话已过期，请重新登录。")
-      uni.$roc.clearStorage()
+      uni.$u.toast("无效的会话，或者会话已过期，请重新登录。")
+      uni.$u.clearStorage()
       setTimeout(() => {
-        uni.$roc.route("/pages/login/login")
+        uni.$u.route("/pages/login/login")
       }, 500)
       return false
     } else {
-      uni.$roc.toast(res.msg)
+      uni.$u.toast(res.msg)
     }
   }
 }

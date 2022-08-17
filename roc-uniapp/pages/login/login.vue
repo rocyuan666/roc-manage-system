@@ -68,14 +68,14 @@ export default {
     this.getCode()
   },
   onShow() {
-    if (this.$roc.getStorage(tokenKey)) {
-      this.$roc.route({
+    if (this.$u.getStorage(tokenKey)) {
+      this.$u.route({
         type: 'tab',
         url: '/pages/index/index',
       })
     }
     // 工具集
-    // console.log(this.$roc)
+    // console.log(this.$u)
   },
   methods: {
     ...mapActions({
@@ -93,7 +93,7 @@ export default {
     async handleLogin() {
       try {
         const token = await this.login(this.loginForm)
-        this.$roc.route({
+        this.$u.route({
           type: 'tab',
           url: '/pages/index/index',
         })
@@ -151,7 +151,7 @@ page {
         height: 90rpx;
         line-height: 90rpx;
         border-radius: 12rpx;
-        background-color: $uni-primary;
+        background-color: $uni-color-primary;
         font-size: 32rpx;
         color: #fff;
         margin-top: 66rpx;
@@ -162,7 +162,7 @@ page {
         font-size: 28rpx;
         padding-top: 32rpx;
         .ljzc {
-          color: $uni-primary;
+          color: $uni-color-primary;
         }
         .wjmm {
           color: #999;

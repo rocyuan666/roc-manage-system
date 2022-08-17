@@ -18,22 +18,22 @@ function urlFormater(url, params) {
 const request = {
   // post提交
   post(url, params, header = {}) {
-    return uni.$roc.http.post(url, params, header)
+    return uni.$u.http.post(url, params, header)
   },
   // get提交
   get(url, params, header = {}) {
     let path = urlFormater(url, params)
-    return uni.$roc.http.get(path, header)
+    return uni.$u.http.get(path, header)
   },
 
   // put提交
   put(url, params, header = {}) {
-    return uni.$roc.http.put(url, params, header)
+    return uni.$u.http.put(url, params, header)
   },
 
   // delete提交
   delete(url, params, header = {}) {
-    return uni.$roc.http.delete(url, params, header)
+    return uni.$u.http.delete(url, params, header)
   },
 
 }

@@ -5,25 +5,21 @@
       <view class="left">头像</view>
       <view class="right">
         <view class="header-img">
-          <image src="../../static/images/top_user_img.jpg" mode=""></image>
+          <image
+            :src="user.avatar == '' ? '../../static/images/top_user_img.jpg' : user.avatar"
+            mode=""
+          ></image>
         </view>
       </view>
     </view>
     <view class="row">
       <view class="left">昵称</view>
-      <view class="right"><input class="input-dom" type="text" v-model="userInfo.name" /></view>
+      <view class="right"><input class="input-dom" type="text" v-model="user.nickName" /></view>
     </view>
     <view class="row" @click="sexIsShow = true">
       <view class="left">性别</view>
       <view class="right">
-        <view class="text">{{ sexType }}</view>
-        <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
-      </view>
-    </view>
-    <view class="row" @click="dateIsShow = true">
-      <view class="left">生日</view>
-      <view class="right">
-        <view class="text">{{ birthday }}</view>
+        <view class="text">{{ sexList[user.sex] }}</view>
         <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
       </view>
     </view>
@@ -34,32 +30,14 @@
           class="input-dom"
           placeholder="请输入手机号码"
           type="text"
-          v-model="userInfo.phone"
+          v-model="user.phonenumber"
         />
       </view>
     </view>
     <view class="row">
-      <view class="left">身份证号</view>
+      <view class="left">用户邮箱</view>
       <view class="right">
-        <input
-          class="input-dom"
-          placeholder="请输入身份证号"
-          type="text"
-          v-model="userInfo.idCard"
-        />
-      </view>
-    </view>
-    <view class="row">
-      <view class="left">联系地址</view>
-      <view class="right">
-        <u-input
-          v-model="userInfo.address"
-          placeholder="请输入联系地址"
-          :custom-style="{ color: '#979797', fontSize: '28rpx' }"
-          height="20"
-          type="textarea"
-          input-align="right"
-        />
+        <input class="input-dom" placeholder="请输入邮箱" type="text" v-model="user.email" />
       </view>
     </view>
     <!-- other-cpn -->
@@ -70,37 +48,26 @@
       :range="sexList"
       @confirm="confirmSex"
     ></u-picker>
-    <u-picker
-      v-model="dateIsShow"
-      mode="time"
-      :default-time="birthday"
-      confirm-color="#0F965B"
-      @confirm="confirmDate"
-    ></u-picker>
   </view>
 </template>
 
 <script>
+import { getUserProfile } from '@/api/system/user.js'
+
 export default {
   data() {
     return {
       user: {},
-      userInfo: {
-        name: 'rocyuan',
-        phone: '17788889999',
-        idCard: '610125199303098865',
-        address: '陕西省西安市唐延南路88号',
-      },
       sexIsShow: false,
-      sexIndex: 0,
       sexList: ['男', '女'],
-      dateIsShow: false,
-      birthday: '1996-07-04',
     }
+  },
+  onLoad() {
+    this.getUser()
   },
   computed: {
     sexType() {
-      return this.sexList[this.sexIndex]
+      return this.sexList[this.user.sex]
     },
   },
   methods: {
@@ -110,10 +77,7 @@ export default {
       })
     },
     confirmSex(e) {
-      this.sexIndex = e[0]
-    },
-    confirmDate(e) {
-      this.birthday = `${e.year}-${e.month}-${e.day}`
+      this.user.sex = e[0]
     },
   },
 }

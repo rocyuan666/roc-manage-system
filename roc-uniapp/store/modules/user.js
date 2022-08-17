@@ -7,12 +7,12 @@ import {
 } from '@/common/config.js'
 
 const state = {
-  token: uni.$roc.getStorage(tokenKey)
+  token: uni.$u.getStorage(tokenKey)
 }
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
-    uni.$roc.setStorage(tokenKey, token)
+    uni.$u.setStorage(tokenKey, token)
   }
 }
 const actions = {
@@ -41,7 +41,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         commit('SET_TOKEN', '')
-        uni.$roc.clearStorage()
+        uni.$u.clearStorage()
         resolve()
       }).catch(error => {
         reject(error)
