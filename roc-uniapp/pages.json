@@ -27,16 +27,16 @@
       "enablePullDownRefresh": false
     }
   }, {
-    "path": "pages/profile/profile",
+    "path": "pages/my/profileEdit",
     "style": {
-      "navigationBarTitleText": "个人信息",
+      "navigationBarTitleText": "修改信息",
       "enablePullDownRefresh": false
     }
   }],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "首页",
-    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarBackgroundColor": "#2979ff",
     "backgroundColor": "#f8f8f8",
     "navigationStyle": "custom",
     "app-plus": {
@@ -45,7 +45,7 @@
   },
   "tabBar": {
     "color": "#7a7e83",
-    "selectedColor": "#1890ff",
+    "selectedColor": "#2979ff",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [{

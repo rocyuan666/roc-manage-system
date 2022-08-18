@@ -1,5 +1,8 @@
 <template>
-  <view class="work-container"><roc-navbar title="工作台"></roc-navbar></view>
+  <view class="work-container">
+    <roc-navbar title="工作台"></roc-navbar>
+    <view>工作台</view>
+  </view>
 </template>
 
 <script>

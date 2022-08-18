@@ -74,12 +74,11 @@ export default {
         url: '/pages/index/index',
       })
     }
-    // 工具集
-    // console.log(this.$u)
   },
   methods: {
     ...mapActions({
       login: 'Login',
+      userProfile: 'UserProfile',
     }),
     getCode() {
       getCodeImg().then(res => {
@@ -92,7 +91,8 @@ export default {
     },
     async handleLogin() {
       try {
-        const token = await this.login(this.loginForm)
+        await this.login(this.loginForm)
+        await this.userProfile()
         this.$u.route({
           type: 'tab',
           url: '/pages/index/index',
@@ -109,6 +109,7 @@ export default {
 
 <style lang="scss" scoped>
 page {
+  background-color: #fff;
   .login-container {
     background: url(../../static/images/login-bg.jpg) no-repeat;
     background-size: 100% 360rpx;

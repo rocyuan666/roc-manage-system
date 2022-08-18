@@ -1,6 +1,6 @@
 <template>
-  <view class="profile-container">
-    <roc-navbar title="个人信息"></roc-navbar>
+  <view class="profile-edit-container">
+    <roc-navbar title="修改信息"></roc-navbar>
     <view class="row">
       <view class="left">头像</view>
       <view class="right">
@@ -40,42 +40,32 @@
         <input class="input-dom" placeholder="请输入邮箱" type="text" v-model="user.email" />
       </view>
     </view>
+    <u-button class="roc-btn" type="primary">提交</u-button>
     <!-- other-cpn -->
-    <u-picker
-      v-model="sexIsShow"
-      mode="selector"
-      confirm-color="#0F965B"
-      :range="sexList"
-      @confirm="confirmSex"
-    ></u-picker>
+    <u-picker v-model="sexIsShow" mode="selector" :range="sexList" @confirm="confirmSex"></u-picker>
   </view>
 </template>
 
 <script>
 import { getUserProfile } from '@/api/system/user.js'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
-      user: {},
       sexIsShow: false,
       sexList: ['男', '女'],
     }
   },
-  onLoad() {
-    this.getUser()
-  },
   computed: {
+    ...mapGetters({
+      user: 'user',
+    }),
     sexType() {
       return this.sexList[this.user.sex]
     },
   },
   methods: {
-    getUser() {
-      getUserProfile().then(response => {
-        this.user = response.data
-      })
-    },
     confirmSex(e) {
       this.user.sex = e[0]
     },
@@ -86,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 page {
   background-color: #fff;
-  .profile-container {
+  .profile-edit-container {
     padding: 0 24rpx;
     .row {
       display: flex;
@@ -132,6 +122,9 @@ page {
           height: 28rpx;
         }
       }
+    }
+    .roc-btn {
+      margin-top: 100rpx;
     }
   }
 }

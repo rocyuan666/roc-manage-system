@@ -50,9 +50,9 @@ export default {
         },
         color: '#fff',
         bgColor: {
-          background: '#1890ff',
+          background: '#2979ff',
         },
-        background: '#1890ff',
+        background: '#2979ff',
         isshow: true,
         titleColor: '#fff',
         titleSize: '35',

@@ -12,7 +12,7 @@
         <view class="username">{{ user.nickName }}</view>
         <view class="sysid">账号：{{ user.userName }}</view>
       </view>
-      <view class="btn-my-info" @click="toPageProfile">个人信息</view>
+      <view class="btn-my-info" @click="toPageProfile">修改信息</view>
     </view>
     <view class="profile-main">
       <view class="list-box">
@@ -39,35 +39,29 @@
 <script>
 import { tokenKey } from '@/common/config.js'
 import { getUserProfile } from '@/api/system/user.js'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
       // 缓存文件大小
       cacheSizeString: '',
-      user: {},
-      roleGroup: {},
-      postGroup: {},
-      activeTab: 'userinfo',
     }
   },
   onLoad() {
-    this.getUser()
     this.formatSize()
   },
   onShow() {
     if (!this.$u.getStorage(tokenKey)) this.$u.route('/pages/login/login')
   },
+  computed: {
+    ...mapGetters({
+      user: 'user',
+    }),
+  },
   methods: {
     toPageProfile() {
-      this.$u.route('/pages/profile/profile')
-    },
-    getUser() {
-      getUserProfile().then(response => {
-        this.user = response.data
-        this.roleGroup = response.roleGroup
-        this.postGroup = response.postGroup
-      })
+      this.$u.route('/pages/my/profileEdit')
     },
     handleExit() {
       const that = this
