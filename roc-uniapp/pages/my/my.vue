@@ -226,10 +226,10 @@ page {
       .list-box {
         background-color: #fff;
         border-radius: 16rpx;
-        padding: 20rpx 44rpx;
         .row {
           display: flex;
           align-items: center;
+          border: 1px solid #fafafa;
           .icon-img {
             display: block;
             width: 60rpx;
