@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-    <groupId>top.luojing</groupId>
+    <groupId>top.rocyuan</groupId>
     <artifactId>roc</artifactId>
     <version>3.8.3</version>
 
@@ -153,35 +153,35 @@
 
             <!-- 定时任务-->
             <dependency>
-                <groupId>top.luojing</groupId>
+                <groupId>top.rocyuan</groupId>
                 <artifactId>roc-quartz</artifactId>
                 <version>${roc.version}</version>
             </dependency>
 
             <!-- 代码生成-->
             <dependency>
-                <groupId>top.luojing</groupId>
+                <groupId>top.rocyuan</groupId>
                 <artifactId>roc-generator</artifactId>
                 <version>${roc.version}</version>
             </dependency>
 
             <!-- 核心模块-->
             <dependency>
-                <groupId>top.luojing</groupId>
+                <groupId>top.rocyuan</groupId>
                 <artifactId>roc-framework</artifactId>
                 <version>${roc.version}</version>
             </dependency>
 
             <!-- 系统模块-->
             <dependency>
-                <groupId>top.luojing</groupId>
+                <groupId>top.rocyuan</groupId>
                 <artifactId>roc-system</artifactId>
                 <version>${roc.version}</version>
             </dependency>
 
             <!-- 通用工具-->
             <dependency>
-                <groupId>top.luojing</groupId>
+                <groupId>top.rocyuan</groupId>
                 <artifactId>roc-common</artifactId>
                 <version>${roc.version}</version>
             </dependency>

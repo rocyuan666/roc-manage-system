@@ -3,10 +3,7 @@ package ${packageName}.domain;
 #foreach ($import in $subImportList)
 import ${import};
 #end
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import top.luojing.common.annotation.Excel;
-import top.luojing.common.core.domain.BaseEntity;
+import top.rocyuan.common.annotation.Excel;
 
 /**
  * ${subTable.functionName}对象 ${subTableName}

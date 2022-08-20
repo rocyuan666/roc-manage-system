@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>roc</artifactId>
-        <groupId>top.luojing</groupId>
+        <groupId>top.rocyuan</groupId>
         <version>3.8.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
 
         <!-- 通用工具-->
         <dependency>
-            <groupId>top.luojing</groupId>
+            <groupId>top.rocyuan</groupId>
             <artifactId>roc-common</artifactId>
         </dependency>
 

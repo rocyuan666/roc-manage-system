@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import top.luojing.common.annotation.Log;
-import top.luojing.common.core.controller.BaseController;
-import top.luojing.common.core.domain.AjaxResult;
-import top.luojing.common.enums.BusinessType;
+import top.rocyuan.common.annotation.Log;
+import top.rocyuan.common.core.controller.BaseController;
+import top.rocyuan.common.core.domain.AjaxResult;
+import top.rocyuan.common.enums.BusinessType;
 import ${packageName}.domain.${ClassName};
 import ${packageName}.service.I${ClassName}Service;
-import top.luojing.common.utils.poi.ExcelUtil;
+import top.rocyuan.common.utils.poi.ExcelUtil;
 #if($table.crud || $table.sub)
-import top.luojing.common.core.page.TableDataInfo;
+import top.rocyuan.common.core.page.TableDataInfo;
 #elseif($table.tree)
 #end
 
