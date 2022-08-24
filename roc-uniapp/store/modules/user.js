@@ -12,6 +12,8 @@ import {
 const state = {
   token: uni.$u.getStorage(tokenKey),
   user: uni.$u.getStorage('user'),
+  postGroup: uni.$u.getStorage('postGroup'),
+  roleGroup: uni.$u.getStorage('roleGroup'),
 }
 const mutations = {
   SET_TOKEN: (state, token) => {
@@ -21,6 +23,14 @@ const mutations = {
   SET_USER: (state, user) => {
     state.user = user
     uni.$u.setStorage('user', user)
+  },
+  SET_POST_GROUP: (state, postGroup) => {
+    state.user = postGroup
+    uni.$u.setStorage('postGroup', postGroup)
+  },
+  SET_ROLE_GROUP: (state, roleGroup) => {
+    state.user = roleGroup
+    uni.$u.setStorage('roleGroup', roleGroup)
   }
 }
 const actions = {
@@ -30,6 +40,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       getUserProfile().then((res) => {
         commit('SET_USER', res.data)
+        commit('SET_POST_GROUP', res.postGroup)
+        commit('SET_ROLE_GROUP', res.roleGroup)
         resolve()
       }).catch((error) => {
         reject(error)

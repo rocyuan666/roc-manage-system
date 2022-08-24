@@ -12,10 +12,17 @@
         <view class="username">{{ user.nickName }}</view>
         <view class="sysid">账号：{{ user.userName }}</view>
       </view>
-      <view class="btn-my-info" @click="toPageProfile">修改信息</view>
+      <view class="btn-my-info" @click="toPageProfile">个人信息</view>
     </view>
     <view class="profile-main">
       <view class="list-box">
+        <view class="row" @click="toPageProfileEdit">
+          <image class="icon-img" src="../../static/images/exit.png" mode=""></image>
+          <view class="name">编辑信息</view>
+          <view class="right">
+            <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
+          </view>
+        </view>
         <view class="row" @click="clernCache">
           <image class="icon-img" src="../../static/images/qchc.png" mode=""></image>
           <view class="name">清除缓存</view>
@@ -61,6 +68,9 @@ export default {
   },
   methods: {
     toPageProfile() {
+      this.$u.route('/pages/my/profile')
+    },
+    toPageProfileEdit() {
       this.$u.route('/pages/my/profileEdit')
     },
     handleExit() {

@@ -27,6 +27,12 @@
       "enablePullDownRefresh": false
     }
   }, {
+    "path": "pages/my/profile",
+    "style": {
+      "navigationBarTitleText": "个人信息",
+      "enablePullDownRefresh": false
+    }
+  }, {
     "path": "pages/my/profileEdit",
     "style": {
       "navigationBarTitleText": "修改信息",

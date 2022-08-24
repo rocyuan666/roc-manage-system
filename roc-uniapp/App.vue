@@ -1,4 +1,6 @@
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   onLaunch: function() {
     // #ifdef APP-PLUS
