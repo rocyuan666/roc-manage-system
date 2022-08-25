@@ -64,7 +64,6 @@
 </template>
 
 <script>
-import { getUserProfile } from '@/api/system/user.js'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -72,9 +71,6 @@ export default {
     return {
       sexList: ['男', '女'],
     }
-  },
-  onLoad() {
-    this.userProfile()
   },
   computed: {
     ...mapGetters({

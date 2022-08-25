@@ -25,11 +25,11 @@ const mutations = {
     uni.$u.setStorage('user', user)
   },
   SET_POST_GROUP: (state, postGroup) => {
-    state.user = postGroup
+    state.postGroup = postGroup
     uni.$u.setStorage('postGroup', postGroup)
   },
   SET_ROLE_GROUP: (state, roleGroup) => {
-    state.user = roleGroup
+    state.roleGroup = roleGroup
     uni.$u.setStorage('roleGroup', roleGroup)
   }
 }

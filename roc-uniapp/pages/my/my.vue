@@ -17,7 +17,7 @@
     <view class="profile-main">
       <view class="list-box">
         <view class="row" @click="toPageProfileEdit">
-          <image class="icon-img" src="../../static/images/exit.png" mode=""></image>
+          <image class="icon-img" src="../../static/images/edit.png" mode=""></image>
           <view class="name">编辑信息</view>
           <view class="right">
             <image class="icon-more" src="../../static/images/arrow.svg" mode=""></image>
@@ -45,7 +45,6 @@
 
 <script>
 import { tokenKey } from '@/common/config.js'
-import { getUserProfile } from '@/api/system/user.js'
 import { mapGetters } from 'vuex'
 
 export default {

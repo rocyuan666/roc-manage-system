@@ -40,34 +40,43 @@
         <input class="input-dom" placeholder="请输入邮箱" type="text" v-model="user.email" />
       </view>
     </view>
-    <u-button class="roc-btn" type="primary">提交</u-button>
+    <u-button class="roc-btn" type="primary" @click="save">提交</u-button>
     <!-- other-cpn -->
     <u-picker v-model="sexIsShow" mode="selector" :range="sexList" @confirm="confirmSex"></u-picker>
   </view>
 </template>
 
 <script>
-import { getUserProfile } from '@/api/system/user.js'
-import { mapGetters } from 'vuex'
+import { updateUserProfile } from '@/api/system/user.js'
+import { mapActions } from 'vuex'
 
 export default {
   data() {
     return {
       sexIsShow: false,
       sexList: ['男', '女'],
+      user: {},
     }
   },
+  onLoad() {
+    this.user = { ...this.$store.state.user.user }
+  },
   computed: {
-    ...mapGetters({
-      user: 'user',
-    }),
     sexType() {
       return this.sexList[this.user.sex]
     },
   },
   methods: {
+    ...mapActions({
+      userProfile: 'UserProfile',
+    }),
     confirmSex(e) {
       this.user.sex = e[0]
+    },
+    async save() {
+      const res = await updateUserProfile(this.user)
+      this.$u.toast('修改成功')
+      await this.userProfile()
     },
   },
 }
