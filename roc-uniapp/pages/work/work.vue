@@ -1,9 +1,7 @@
 <template>
   <view class="work-container">
     <roc-navbar title="工作台"></roc-navbar>
-    <view v-for="menu in menus" :key="menu.id">
-      <view>{{ menu.meta.title }}</view>
-    </view>
+    <roc-menu :list="menus"></roc-menu>
   </view>
 </template>
 
