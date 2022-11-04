@@ -90,6 +90,11 @@ export default {
       })
     },
     async handleLogin() {
+      if (this.loginForm.username.trim() == '' || this.loginForm.password.trim() == '') {
+        return this.$u.toast('账号密码不能为空~')
+      } else if (this.loginForm.code.trim() == '') {
+        return this.$u.toast('验证码不能为空~')
+      }
       try {
         await this.login(this.loginForm)
         await this.userProfile()

@@ -20,6 +20,7 @@ export default {
 <style lang="scss">
 /*每个页面公共css */
 @import 'uview-ui/index.scss';
+@import './static/iconfont/iconfont.css';
 // 设置整个项目的背景色
 page {
   background-color: #f5f5f5;

@@ -15,11 +15,9 @@ export default {
       menus: [],
     }
   },
-  onLoad() {
-    this.getRouters()
-  },
   onShow() {
     if (!this.$u.getStorage(tokenKey)) this.$u.route('/pages/login/login')
+    this.getRouters()
   },
   methods: {
     async getRouters() {

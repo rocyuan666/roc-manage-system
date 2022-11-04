@@ -2,11 +2,15 @@
   <view class="roc-menu-component">
     <view v-for="menu in list" :key="menu.id">
       <view v-if="menu.children && menu.children.length">
-        <view>{{ menu.meta.title }}</view>
+        <roc-icon :name="menu.meta.icon"></roc-icon>
+        <text>{{ menu.meta.title }}</text>
         <!-- 递归组件 -->
         <roc-menu :list="menu.children"></roc-menu>
       </view>
-      <view class="menu-btn" v-else @click="handleToPage(menu)">{{ menu.meta.title }}</view>
+      <view class="menu-btn" v-else @click="handleToPage(menu)">
+        <roc-icon :name="menu.meta.icon"></roc-icon>
+        <text>{{ menu.meta.title }}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -52,5 +56,9 @@ export default {
 }
 .menu-btn {
   color: $uni-color-primary;
+  line-height: 1.5;
+}
+.roc-icon {
+  padding-right: 10rpx;
 }
 </style>
