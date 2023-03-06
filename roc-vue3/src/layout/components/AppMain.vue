@@ -3,7 +3,7 @@
     <router-view v-slot="{ Component, route }">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">
-          <component :is="Component" :key="route.path"/>
+          <component :is="Component" :key="route.path" />
         </keep-alive>
       </transition>
     </router-view>
@@ -17,7 +17,7 @@ const tagsViewStore = useTagsViewStore()
 const route = useRoute()
 tagsViewStore.addCachedView(route)
 const cachedViews = computed(() => {
-    return tagsViewStore.cachedViews
+  return tagsViewStore.cachedViews
 })
 </script>
 

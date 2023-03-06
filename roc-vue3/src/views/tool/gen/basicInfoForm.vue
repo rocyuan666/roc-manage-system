@@ -36,13 +36,13 @@ defineProps({
     type: Object,
     default: null
   }
-});
+})
 
 // 表单校验
 const rules = ref({
-  tableName: [{ required: true, message: "请输入表名称", trigger: "blur" }],
-  tableComment: [{ required: true, message: "请输入表描述", trigger: "blur" }],
-  className: [{ required: true, message: "请输入实体类名称", trigger: "blur" }],
-  functionAuthor: [{ required: true, message: "请输入作者", trigger: "blur" }]
-});
+  tableName: [{ required: true, message: '请输入表名称', trigger: 'blur' }],
+  tableComment: [{ required: true, message: '请输入表描述', trigger: 'blur' }],
+  className: [{ required: true, message: '请输入实体类名称', trigger: 'blur' }],
+  functionAuthor: [{ required: true, message: '请输入作者', trigger: 'blur' }]
+})
 </script>

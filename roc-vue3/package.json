@@ -1,5 +1,5 @@
 {
-  "name": "ruoyi",
+  "name": "roc",
   "version": "3.8.3",
   "description": "大鹏管理系统",
   "author": "rocyuan",
@@ -9,7 +9,9 @@
     "serve": "vite",
     "build:prod": "vite build",
     "build:stage": "vite build --mode staging",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,11 @@
     "vite": "2.9.9",
     "vite-plugin-compression": "0.5.1",
     "vite-plugin-svg-icons": "2.0.1",
-    "vite-plugin-vue-setup-extend": "0.4.0"
+    "vite-plugin-vue-setup-extend": "0.4.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "eslint": "^8.34.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "@rushstack/eslint-patch": "^1.2.0",
+    "prettier": "^2.8.4"
   }
 }

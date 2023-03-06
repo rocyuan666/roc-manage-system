@@ -12,7 +12,6 @@ import store from './store'
 import router from './router'
 import directive from './directive' // directive
 
-
 // 注册指令
 import plugins from './plugins' // plugins
 import { download } from '@/utils/request'
@@ -25,18 +24,25 @@ import elementIcons from '@/components/SvgIcon/svgicon'
 import './permission' // permission control
 
 import { useDict } from '@/utils/dict'
-import { parseTime, resetForm, addDateRange, handleTree, selectDictLabel, selectDictLabels } from '@/utils/ruoyi'
+import {
+  parseTime,
+  resetForm,
+  addDateRange,
+  handleTree,
+  selectDictLabel,
+  selectDictLabels
+} from '@/utils/ruoyi'
 
 // 分页组件
 import Pagination from '@/components/Pagination'
 // 自定义表格工具组件
 import RightToolbar from '@/components/RightToolbar'
 // 文件上传组件
-import FileUpload from "@/components/FileUpload"
+import FileUpload from '@/components/FileUpload'
 // 图片上传组件
-import ImageUpload from "@/components/ImageUpload"
+import ImageUpload from '@/components/ImageUpload'
 // 图片预览组件
-import ImagePreview from "@/components/ImagePreview"
+import ImagePreview from '@/components/ImagePreview'
 // 自定义树选择组件
 import TreeSelect from '@/components/TreeSelect'
 // 字典标签组件

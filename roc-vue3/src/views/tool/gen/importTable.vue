@@ -24,15 +24,29 @@
       </el-form-item>
     </el-form>
     <el-row>
-      <el-table @row-click="clickRow" ref="table" :data="dbTableList" @selection-change="handleSelectionChange" height="260px">
+      <el-table
+        @row-click="clickRow"
+        ref="table"
+        :data="dbTableList"
+        @selection-change="handleSelectionChange"
+        height="260px"
+      >
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="tableName" label="表名称" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="tableComment" label="表描述" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column
+          prop="tableName"
+          label="表名称"
+          :show-overflow-tooltip="true"
+        ></el-table-column>
+        <el-table-column
+          prop="tableComment"
+          label="表描述"
+          :show-overflow-tooltip="true"
+        ></el-table-column>
         <el-table-column prop="createTime" label="创建时间"></el-table-column>
         <el-table-column prop="updateTime" label="更新时间"></el-table-column>
       </el-table>
       <pagination
-        v-show="total>0"
+        v-show="total > 0"
         :total="total"
         v-model:page="queryParams.pageNum"
         v-model:limit="queryParams.pageSize"
@@ -49,70 +63,70 @@
 </template>
 
 <script setup>
-import { listDbTable, importTable } from "@/api/tool/gen";
+import { listDbTable, importTable } from '@/api/tool/gen'
 
-const total = ref(0);
-const visible = ref(false);
-const tables = ref([]);
-const dbTableList = ref([]);
-const { proxy } = getCurrentInstance();
+const total = ref(0)
+const visible = ref(false)
+const tables = ref([])
+const dbTableList = ref([])
+const { proxy } = getCurrentInstance()
 
 const queryParams = reactive({
   pageNum: 1,
   pageSize: 10,
   tableName: undefined,
   tableComment: undefined
-});
+})
 
-const emit = defineEmits(["ok"]);
+const emit = defineEmits(['ok'])
 
 /** 查询参数列表 */
 function show() {
-  getList();
-  visible.value = true;
+  getList()
+  visible.value = true
 }
 /** 单击选择行 */
 function clickRow(row) {
-  proxy.$refs.table.toggleRowSelection(row);
+  proxy.$refs.table.toggleRowSelection(row)
 }
 /** 多选框选中数据 */
 function handleSelectionChange(selection) {
-  tables.value = selection.map(item => item.tableName);
+  tables.value = selection.map((item) => item.tableName)
 }
 /** 查询表数据 */
 function getList() {
-  listDbTable(queryParams).then(res => {
-    dbTableList.value = res.rows;
-    total.value = res.total;
-  });
+  listDbTable(queryParams).then((res) => {
+    dbTableList.value = res.rows
+    total.value = res.total
+  })
 }
 /** 搜索按钮操作 */
 function handleQuery() {
-  queryParams.pageNum = 1;
-  getList();
+  queryParams.pageNum = 1
+  getList()
 }
 /** 重置按钮操作 */
 function resetQuery() {
-  proxy.resetForm("queryRef");
-  handleQuery();
+  proxy.resetForm('queryRef')
+  handleQuery()
 }
 /** 导入按钮操作 */
 function handleImportTable() {
-  const tableNames = tables.value.join(",");
-  if (tableNames == "") {
-    proxy.$modal.msgError("请选择要导入的表");
-    return;
+  const tableNames = tables.value.join(',')
+  if (tableNames == '') {
+    proxy.$modal.msgError('请选择要导入的表')
+    return
   }
-  importTable({ tables: tableNames }).then(res => {
-    proxy.$modal.msgSuccess(res.msg);
+  importTable({ tables: tableNames }).then((res) => {
+    proxy.$modal.msgSuccess(res.msg)
     if (res.code === 200) {
-      visible.value = false;
-      emit("ok");
+      visible.value = false
+      emit('ok')
     }
-  });
+  })
 }
 
 defineExpose({
-  show,
-});
+  show
+})
 </script>
