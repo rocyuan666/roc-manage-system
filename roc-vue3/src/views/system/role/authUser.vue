@@ -72,7 +72,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="CircleClose"
             @click="cancelAuthUser(scope.row)"
             v-hasPermi="['system:role:remove']"
@@ -113,7 +113,7 @@ const queryParams = reactive({
   pageSize: 10,
   roleId: route.params.roleId,
   userName: undefined,
-  phonenumber: undefined
+  phonenumber: undefined,
 })
 
 /** 查询授权用户列表 */

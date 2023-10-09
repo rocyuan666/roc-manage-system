@@ -142,7 +142,7 @@
         <template #default="scope">
           <el-tooltip content="修改" placement="top">
             <el-button
-              type="text"
+              link
               icon="Edit"
               @click="handleUpdate(scope.row)"
               v-hasPermi="['monitor:job:edit']"
@@ -150,7 +150,7 @@
           </el-tooltip>
           <el-tooltip content="删除" placement="top">
             <el-button
-              type="text"
+              link
               icon="Delete"
               @click="handleDelete(scope.row)"
               v-hasPermi="['monitor:job:remove']"
@@ -158,7 +158,7 @@
           </el-tooltip>
           <el-tooltip content="执行一次" placement="top">
             <el-button
-              type="text"
+              link
               icon="CaretRight"
               @click="handleRun(scope.row)"
               v-hasPermi="['monitor:job:changeStatus']"
@@ -166,7 +166,7 @@
           </el-tooltip>
           <el-tooltip content="任务详细" placement="top">
             <el-button
-              type="text"
+              link
               icon="View"
               @click="handleView(scope.row)"
               v-hasPermi="['monitor:job:query']"
@@ -174,7 +174,7 @@
           </el-tooltip>
           <el-tooltip content="调度日志" placement="top">
             <el-button
-              type="text"
+              link
               icon="Operation"
               @click="handleJobLog(scope.row)"
               v-hasPermi="['monitor:job:query']"
@@ -222,7 +222,7 @@
                     <template #content>
                       <div>
                         Bean调用示例：ryTask.ryParams('ry')
-                        <br />Class类调用示例：com.ruoyi.quartz.task.RyTask.ryParams('ry')
+                        <br />Class类调用示例：top.rocyuan.quartz.task.RyTask.ryParams('ry')
                         <br />参数说明：支持字符串，布尔类型，长整型，浮点型，整型
                       </div>
                     </template>
@@ -341,7 +341,7 @@ import {
   addJob,
   updateJob,
   runJob,
-  changeJobStatus
+  changeJobStatus,
 } from '@/api/monitor/job'
 
 const router = useRouter()
@@ -368,13 +368,13 @@ const data = reactive({
     pageSize: 10,
     jobName: undefined,
     jobGroup: undefined,
-    status: undefined
+    status: undefined,
   },
   rules: {
     jobName: [{ required: true, message: '任务名称不能为空', trigger: 'blur' }],
     invokeTarget: [{ required: true, message: '调用目标字符串不能为空', trigger: 'blur' }],
-    cronExpression: [{ required: true, message: 'cron执行表达式不能为空', trigger: 'blur' }]
-  }
+    cronExpression: [{ required: true, message: 'cron执行表达式不能为空', trigger: 'blur' }],
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -407,7 +407,7 @@ function reset() {
     cronExpression: undefined,
     misfirePolicy: 1,
     concurrent: 1,
-    status: '0'
+    status: '0',
   }
   proxy.resetForm('jobRef')
 }
@@ -546,9 +546,9 @@ function handleExport() {
   proxy.download(
     'monitor/job/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `job_${new Date().getTime()}.xlsx`
+    `job_${new Date().getTime()}.xlsx`,
   )
 }
 

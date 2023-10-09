@@ -84,7 +84,7 @@ const options = reactive({
   autoCropWidth: 200, // 默认生成截图框宽度
   autoCropHeight: 200, // 默认生成截图框高度
   fixedBox: true, // 固定截图框大小 不允许改变
-  previews: {} //预览数据
+  previews: {}, //预览数据
 })
 
 /** 编辑头像 */

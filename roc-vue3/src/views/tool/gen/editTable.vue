@@ -158,7 +158,7 @@ function submitForm() {
         treeCode: info.value.treeCode,
         treeName: info.value.treeName,
         treeParentCode: info.value.treeParentCode,
-        parentMenuId: info.value.parentMenuId
+        parentMenuId: info.value.parentMenuId,
       }
       updateGenTable(genTable).then((res) => {
         proxy.$modal.msgSuccess(res.msg)

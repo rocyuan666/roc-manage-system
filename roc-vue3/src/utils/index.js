@@ -1,4 +1,4 @@
-import { parseTime } from '@/ruoyi'
+import { parseTime } from '@/utils/roc'
 
 /**
  * 表格时间格式化
@@ -109,7 +109,7 @@ export function param(json) {
     Object.keys(json).map((key) => {
       if (json[key] === undefined) return ''
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
-    })
+    }),
   ).join('&')
 }
 
@@ -340,7 +340,7 @@ export const beautifierConf = {
     indent_inner_html: true,
     comma_first: false,
     e4x: true,
-    indent_empty_lines: true
+    indent_empty_lines: true,
   },
   js: {
     indent_size: '2',
@@ -359,8 +359,8 @@ export const beautifierConf = {
     indent_inner_html: true,
     comma_first: false,
     e4x: true,
-    indent_empty_lines: true
-  }
+    indent_empty_lines: true,
+  },
 }
 
 // 首字母大小

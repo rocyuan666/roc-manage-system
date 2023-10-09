@@ -15,16 +15,16 @@ export default {
       h(
         'div',
         {
-          style: style
+          style: style,
         },
         h('iframe', {
           src: url,
           frameborder: 'no',
           width: '100%',
           height: '100%',
-          scrolling: 'auto'
-        })
+          scrolling: 'auto',
+        }),
       )
-  }
+  },
 }
 </script>

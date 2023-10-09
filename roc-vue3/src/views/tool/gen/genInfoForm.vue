@@ -16,7 +16,7 @@
         <el-form-item prop="packageName">
           <template #label>
             生成包路径
-            <el-tooltip content="生成在哪个java包下，例如 com.ruoyi.system" placement="top">
+            <el-tooltip content="生成在哪个java包下，例如 top.rocyuan.system" placement="top">
               <el-icon><question-filled /></el-icon>
             </el-tooltip>
           </template>
@@ -233,12 +233,12 @@ const { proxy } = getCurrentInstance()
 const props = defineProps({
   info: {
     type: Object,
-    default: null
+    default: null,
   },
   tables: {
     type: Array,
-    default: null
-  }
+    default: null,
+  },
 })
 
 // 表单校验
@@ -247,7 +247,7 @@ const rules = ref({
   packageName: [{ required: true, message: '请输入生成包路径', trigger: 'blur' }],
   moduleName: [{ required: true, message: '请输入生成模块名', trigger: 'blur' }],
   businessName: [{ required: true, message: '请输入生成业务名', trigger: 'blur' }],
-  functionName: [{ required: true, message: '请输入生成功能名', trigger: 'blur' }]
+  functionName: [{ required: true, message: '请输入生成功能名', trigger: 'blur' }],
 })
 function subSelectChange(value) {
   props.info.subTableFkName = ''
@@ -278,7 +278,7 @@ watch(
   () => props.info.subTableName,
   (val) => {
     setSubTableColumns(val)
-  }
+  },
 )
 
 getMenuTreeselect()

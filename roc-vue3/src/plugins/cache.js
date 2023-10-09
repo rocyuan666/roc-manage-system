@@ -29,7 +29,7 @@ const sessionCache = {
   },
   remove(key) {
     sessionStorage.removeItem(key)
-  }
+  },
 }
 const localCache = {
   set(key, value) {
@@ -62,7 +62,7 @@ const localCache = {
   },
   remove(key) {
     localStorage.removeItem(key)
-  }
+  },
 }
 
 export default {
@@ -73,5 +73,5 @@ export default {
   /**
    * 本地缓存
    */
-  local: localCache
+  local: localCache,
 }

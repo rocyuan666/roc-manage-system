@@ -78,7 +78,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-register-footer">
-      <span>Copyright © 2018-2022 ruoyi.vip All Rights Reserved.</span>
+      <span>Copyright © 2018-2022 All Rights Reserved.</span>
     </div>
   </div>
 </template>
@@ -95,7 +95,7 @@ const registerForm = ref({
   password: '',
   confirmPassword: '',
   code: '',
-  uuid: ''
+  uuid: '',
 })
 
 const equalToPassword = (rule, value, callback) => {
@@ -109,17 +109,17 @@ const equalToPassword = (rule, value, callback) => {
 const registerRules = {
   username: [
     { required: true, trigger: 'blur', message: '请输入您的账号' },
-    { min: 2, max: 20, message: '用户账号长度必须介于 2 和 20 之间', trigger: 'blur' }
+    { min: 2, max: 20, message: '用户账号长度必须介于 2 和 20 之间', trigger: 'blur' },
   ],
   password: [
     { required: true, trigger: 'blur', message: '请输入您的密码' },
-    { min: 5, max: 20, message: '用户密码长度必须介于 5 和 20 之间', trigger: 'blur' }
+    { min: 5, max: 20, message: '用户密码长度必须介于 5 和 20 之间', trigger: 'blur' },
   ],
   confirmPassword: [
     { required: true, trigger: 'blur', message: '请再次输入您的密码' },
-    { required: true, validator: equalToPassword, trigger: 'blur' }
+    { required: true, validator: equalToPassword, trigger: 'blur' },
   ],
-  code: [{ required: true, trigger: 'change', message: '请输入验证码' }]
+  code: [{ required: true, trigger: 'change', message: '请输入验证码' }],
 }
 
 const codeUrl = ref('')
@@ -138,8 +138,8 @@ function handleRegister() {
             '系统提示',
             {
               dangerouslyUseHTMLString: true,
-              type: 'success'
-            }
+              type: 'success',
+            },
           )
             .then(() => {
               router.push('/login')

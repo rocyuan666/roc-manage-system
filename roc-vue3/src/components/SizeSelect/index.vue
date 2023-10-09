@@ -31,7 +31,7 @@ const { proxy } = getCurrentInstance()
 const sizeOptions = ref([
   { label: '较大', value: 'large' },
   { label: '默认', value: 'default' },
-  { label: '稍小', value: 'small' }
+  { label: '稍小', value: 'small' },
 ])
 
 function handleSetSize(size) {

@@ -103,14 +103,14 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="Edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:notice:edit']"
             >修改</el-button
           >
           <el-button
-            type="text"
+            link
             icon="Delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:notice:remove']"
@@ -203,12 +203,12 @@ const data = reactive({
     pageSize: 10,
     noticeTitle: undefined,
     createBy: undefined,
-    status: undefined
+    status: undefined,
   },
   rules: {
     noticeTitle: [{ required: true, message: '公告标题不能为空', trigger: 'blur' }],
-    noticeType: [{ required: true, message: '公告类型不能为空', trigger: 'change' }]
-  }
+    noticeType: [{ required: true, message: '公告类型不能为空', trigger: 'change' }],
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -234,7 +234,7 @@ function reset() {
     noticeTitle: undefined,
     noticeType: undefined,
     noticeContent: undefined,
-    status: '0'
+    status: '0',
   }
   proxy.resetForm('noticeRef')
 }

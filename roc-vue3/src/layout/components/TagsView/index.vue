@@ -41,7 +41,7 @@
 
 <script setup>
 import ScrollPane from './ScrollPane'
-import { getNormalPath } from '@/utils/ruoyi'
+import { getNormalPath } from '@/utils/roc'
 import useTagsViewStore from '@/store/modules/tagsView'
 import useSettingsStore from '@/store/modules/settings'
 import usePermissionStore from '@/store/modules/permission'
@@ -84,7 +84,7 @@ function activeStyle(tag) {
   if (!isActive(tag)) return {}
   return {
     'background-color': theme.value,
-    'border-color': theme.value
+    'border-color': theme.value,
   }
 }
 function isAffix(tag) {
@@ -116,7 +116,7 @@ function filterAffixTags(routes, basePath = '') {
         fullPath: tagPath,
         path: tagPath,
         name: route.name,
-        meta: { ...route.meta }
+        meta: { ...route.meta },
       })
     }
     if (route.children) {
@@ -242,7 +242,9 @@ function handleScroll() {
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #d8dce5;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.12),
+    0 0 3px 0 rgba(0, 0, 0, 0.04);
   .tags-view-wrapper {
     .tags-view-item {
       display: inline-block;

@@ -4,7 +4,7 @@
     :class="{ collapse: collapse }"
     :style="{
       backgroundColor:
-        sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground
+        sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground,
     }"
   >
     <transition name="sidebarLogoFade">
@@ -15,7 +15,7 @@
           class="sidebar-title"
           :style="{
             color:
-              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor
+              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor,
           }"
         >
           {{ title }}
@@ -27,7 +27,7 @@
           class="sidebar-title"
           :style="{
             color:
-              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor
+              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor,
           }"
         >
           {{ title }}
@@ -45,8 +45,8 @@ import useSettingsStore from '@/store/modules/settings'
 defineProps({
   collapse: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const title = ref('大鹏管理系统')

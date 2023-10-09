@@ -31,11 +31,11 @@
 const props = defineProps({
   showSearch: {
     type: Boolean,
-    default: true
+    default: true,
   },
   columns: {
-    type: Array
-  }
+    type: Array,
+  },
 })
 
 const emits = defineEmits(['update:showSearch', 'queryTable'])

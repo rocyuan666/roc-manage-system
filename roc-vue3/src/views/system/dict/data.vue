@@ -124,14 +124,14 @@
       >
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="Edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:dict:edit']"
             >修改</el-button
           >
           <el-button
-            type="text"
+            link
             icon="Delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:dict:remove']"
@@ -224,7 +224,7 @@ const listClassOptions = ref([
   { value: 'success', label: '成功' },
   { value: 'info', label: '信息' },
   { value: 'warning', label: '警告' },
-  { value: 'danger', label: '危险' }
+  { value: 'danger', label: '危险' },
 ])
 
 const data = reactive({
@@ -234,13 +234,13 @@ const data = reactive({
     pageSize: 10,
     dictName: undefined,
     dictType: undefined,
-    status: undefined
+    status: undefined,
   },
   rules: {
     dictLabel: [{ required: true, message: '数据标签不能为空', trigger: 'blur' }],
     dictValue: [{ required: true, message: '数据键值不能为空', trigger: 'blur' }],
-    dictSort: [{ required: true, message: '数据顺序不能为空', trigger: 'blur' }]
-  }
+    dictSort: [{ required: true, message: '数据顺序不能为空', trigger: 'blur' }],
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -284,7 +284,7 @@ function reset() {
     listClass: 'default',
     dictSort: 0,
     status: '0',
-    remark: undefined
+    remark: undefined,
   }
   proxy.resetForm('dataRef')
 }
@@ -366,9 +366,9 @@ function handleExport() {
   proxy.download(
     'system/dict/data/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `dict_data_${new Date().getTime()}.xlsx`
+    `dict_data_${new Date().getTime()}.xlsx`,
   )
 }
 

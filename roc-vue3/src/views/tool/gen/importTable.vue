@@ -75,7 +75,7 @@ const queryParams = reactive({
   pageNum: 1,
   pageSize: 10,
   tableName: undefined,
-  tableComment: undefined
+  tableComment: undefined,
 })
 
 const emit = defineEmits(['ok'])
@@ -127,6 +127,6 @@ function handleImportTable() {
 }
 
 defineExpose({
-  show
+  show,
 })
 </script>

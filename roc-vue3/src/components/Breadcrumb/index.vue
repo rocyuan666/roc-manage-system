@@ -28,7 +28,7 @@ function getBreadcrumb() {
   }
 
   levelList.value = matched.filter(
-    (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
+    (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false,
   )
 }
 function isDashboard(route) {

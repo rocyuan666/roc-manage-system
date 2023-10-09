@@ -14,7 +14,7 @@ const usePermissionStore = defineStore('permission', {
     addRoutes: [],
     defaultRoutes: [],
     topbarRouters: [],
-    sidebarRouters: []
+    sidebarRouters: [],
   }),
   actions: {
     setRoutes(routes) {
@@ -51,8 +51,8 @@ const usePermissionStore = defineStore('permission', {
           resolve(rewriteRoutes)
         })
       })
-    }
-  }
+    },
+  },
 })
 
 // 遍历后台传来的路由字符串，转换为组件对象

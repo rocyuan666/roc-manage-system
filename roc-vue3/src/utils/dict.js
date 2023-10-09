@@ -13,7 +13,7 @@ export function useDict(...args) {
           label: p.dictLabel,
           value: p.dictValue,
           elTagType: p.listClass,
-          elTagClass: p.cssClass
+          elTagClass: p.cssClass,
         }))
       })
     })

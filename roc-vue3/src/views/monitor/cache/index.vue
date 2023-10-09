@@ -121,7 +121,7 @@ function getList() {
     commandstatsIntance.setOption({
       tooltip: {
         trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
+        formatter: '{a} <br/>{b} : {c} ({d}%)',
       },
       series: [
         {
@@ -132,15 +132,15 @@ function getList() {
           center: ['50%', '38%'],
           data: response.data.commandStats,
           animationEasing: 'cubicInOut',
-          animationDuration: 1000
-        }
-      ]
+          animationDuration: 1000,
+        },
+      ],
     })
 
     const usedmemoryInstance = echarts.init(usedmemory.value, 'macarons')
     usedmemoryInstance.setOption({
       tooltip: {
-        formatter: '{b} <br/>{a} : ' + cache.value.info.used_memory_human
+        formatter: '{b} <br/>{a} : ' + cache.value.info.used_memory_human,
       },
       series: [
         {
@@ -149,16 +149,16 @@ function getList() {
           min: 0,
           max: 1000,
           detail: {
-            formatter: cache.value.info.used_memory_human
+            formatter: cache.value.info.used_memory_human,
           },
           data: [
             {
               value: parseFloat(cache.value.info.used_memory_human),
-              name: '内存消耗'
-            }
-          ]
-        }
-      ]
+              name: '内存消耗',
+            },
+          ],
+        },
+      ],
     })
   })
 }

@@ -3,7 +3,7 @@
     :class="{ 'has-logo': showLogo }"
     :style="{
       backgroundColor:
-        sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground
+        sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground,
     }"
   >
     <logo v-if="showLogo" :collapse="isCollapse" />

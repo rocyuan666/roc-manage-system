@@ -171,7 +171,7 @@ const queryParams = ref({
   userName: undefined,
   status: undefined,
   orderByColumn: undefined,
-  isAsc: undefined
+  isAsc: undefined,
 })
 
 /** 查询登录日志列表 */
@@ -238,9 +238,9 @@ function handleExport() {
   proxy.download(
     'monitor/logininfor/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `config_${new Date().getTime()}.xlsx`
+    `config_${new Date().getTime()}.xlsx`,
   )
 }
 

@@ -30,8 +30,8 @@ import {
   addDateRange,
   handleTree,
   selectDictLabel,
-  selectDictLabels
-} from '@/utils/ruoyi'
+  selectDictLabels,
+} from '@/utils/roc'
 
 // 分页组件
 import Pagination from '@/components/Pagination'
@@ -81,7 +81,7 @@ directive(app)
 app.use(ElementPlus, {
   locale: zhCn,
   // 支持 large、default、small
-  size: Cookies.get('size') || 'default'
+  size: Cookies.get('size') || 'default',
 })
 
 app.mount('#app')

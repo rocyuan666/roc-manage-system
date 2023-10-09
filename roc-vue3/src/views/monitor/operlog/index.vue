@@ -159,7 +159,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="View"
             @click="handleView(scope.row, scope.index)"
             v-hasPermi="['system:operlog:query']"
@@ -253,8 +253,8 @@ const data = reactive({
     title: undefined,
     operName: undefined,
     businessType: undefined,
-    status: undefined
-  }
+    status: undefined,
+  },
 })
 
 const { queryParams, form } = toRefs(data)
@@ -332,9 +332,9 @@ function handleExport() {
   proxy.download(
     'monitor/operlog/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `config_${new Date().getTime()}.xlsx`
+    `config_${new Date().getTime()}.xlsx`,
   )
 }
 

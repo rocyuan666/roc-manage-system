@@ -20,16 +20,16 @@ import { isExternal } from '@/utils/validate'
 const props = defineProps({
   src: {
     type: String,
-    required: true
+    required: true,
   },
   width: {
     type: [Number, String],
-    default: ''
+    default: '',
   },
   height: {
     type: [Number, String],
-    default: ''
-  }
+    default: '',
+  },
 })
 
 const realSrc = computed(() => {
@@ -53,11 +53,11 @@ const realSrcList = computed(() => {
 })
 
 const realWidth = computed(() =>
-  typeof props.width == 'string' ? props.width : `${props.width}px`
+  typeof props.width == 'string' ? props.width : `${props.width}px`,
 )
 
 const realHeight = computed(() =>
-  typeof props.height == 'string' ? props.height : `${props.height}px`
+  typeof props.height == 'string' ? props.height : `${props.height}px`,
 )
 </script>
 

@@ -104,14 +104,14 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="Edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:post:edit']"
             >修改</el-button
           >
           <el-button
-            type="text"
+            link
             icon="Delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:post:remove']"
@@ -185,13 +185,13 @@ const data = reactive({
     pageSize: 10,
     postCode: undefined,
     postName: undefined,
-    status: undefined
+    status: undefined,
   },
   rules: {
     postName: [{ required: true, message: '岗位名称不能为空', trigger: 'blur' }],
     postCode: [{ required: true, message: '岗位编码不能为空', trigger: 'blur' }],
-    postSort: [{ required: true, message: '岗位顺序不能为空', trigger: 'blur' }]
-  }
+    postSort: [{ required: true, message: '岗位顺序不能为空', trigger: 'blur' }],
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -218,7 +218,7 @@ function reset() {
     postName: undefined,
     postSort: 0,
     status: '0',
-    remark: undefined
+    remark: undefined,
   }
   proxy.resetForm('postRef')
 }
@@ -293,9 +293,9 @@ function handleExport() {
   proxy.download(
     'system/post/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `post_${new Date().getTime()}.xlsx`
+    `post_${new Date().getTime()}.xlsx`,
   )
 }
 

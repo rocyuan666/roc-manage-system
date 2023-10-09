@@ -131,7 +131,7 @@ const predefineColors = ref([
   '#90ee90',
   '#00ced1',
   '#1e90ff',
-  '#c71585'
+  '#c71585',
 ])
 
 /** 是否需要topnav */
@@ -143,28 +143,28 @@ const topNav = computed({
       appStore.toggleSideBarHide(false)
       permissionStore.setSidebarRouters(permissionStore.defaultRoutes)
     }
-  }
+  },
 })
 /** 是否需要tagview */
 const tagsView = computed({
   get: () => storeSettings.value.tagsView,
   set: (val) => {
     settingsStore.changeSetting({ key: 'tagsView', value: val })
-  }
+  },
 })
 /**是否需要固定头部 */
 const fixedHeader = computed({
   get: () => storeSettings.value.fixedHeader,
   set: (val) => {
     settingsStore.changeSetting({ key: 'fixedHeader', value: val })
-  }
+  },
 })
 /**是否需要侧边栏的logo */
 const sidebarLogo = computed({
   get: () => storeSettings.value.sidebarLogo,
   set: (val) => {
     settingsStore.changeSetting({ key: 'sidebarLogo', value: val })
-  }
+  },
 })
 /**是否需要侧边栏的动态网页的title */
 const dynamicTitle = computed({
@@ -173,7 +173,7 @@ const dynamicTitle = computed({
     settingsStore.changeSetting({ key: 'dynamicTitle', value: val })
     // 动态设置网页标题
     useDynamicTitle()
-  }
+  },
 })
 
 function themeChange(val) {
@@ -193,7 +193,7 @@ function saveSetting() {
     sidebarLogo: storeSettings.value.sidebarLogo,
     dynamicTitle: storeSettings.value.dynamicTitle,
     sideTheme: storeSettings.value.sideTheme,
-    theme: storeSettings.value.theme
+    theme: storeSettings.value.theme,
   }
   localStorage.setItem('layout-setting', JSON.stringify(layoutSetting))
   setTimeout(proxy.$modal.closeLoading(), 1000)
@@ -208,7 +208,7 @@ function openSetting() {
 }
 
 defineExpose({
-  openSetting
+  openSetting,
 })
 </script>
 

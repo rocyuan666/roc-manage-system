@@ -65,17 +65,13 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="Edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:dept:edit']"
             >修改</el-button
           >
-          <el-button
-            type="text"
-            icon="Plus"
-            @click="handleAdd(scope.row)"
-            v-hasPermi="['system:dept:add']"
+          <el-button link icon="Plus" @click="handleAdd(scope.row)" v-hasPermi="['system:dept:add']"
             >新增</el-button
           >
           <el-button
@@ -162,7 +158,7 @@ import {
   delDept,
   addDept,
   updateDept,
-  listDeptExcludeChild
+  listDeptExcludeChild,
 } from '@/api/system/dept'
 
 const { proxy } = getCurrentInstance()
@@ -181,7 +177,7 @@ const data = reactive({
   form: {},
   queryParams: {
     deptName: undefined,
-    status: undefined
+    status: undefined,
   },
   rules: {
     parentId: [{ required: true, message: '上级部门不能为空', trigger: 'blur' }],
@@ -189,9 +185,9 @@ const data = reactive({
     orderNum: [{ required: true, message: '显示排序不能为空', trigger: 'blur' }],
     email: [{ type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }],
     phone: [
-      { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号码', trigger: 'blur' }
-    ]
-  }
+      { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号码', trigger: 'blur' },
+    ],
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -219,7 +215,7 @@ function reset() {
     leader: undefined,
     phone: undefined,
     email: undefined,
-    status: '0'
+    status: '0',
   }
   proxy.resetForm('deptRef')
 }

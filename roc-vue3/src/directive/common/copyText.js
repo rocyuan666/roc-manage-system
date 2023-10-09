@@ -1,6 +1,5 @@
 /**
  * v-copyText 复制文本内容
- * Copyright (c) 2022 ruoyi
  */
 
 export default {
@@ -18,7 +17,7 @@ export default {
       el.addEventListener('click', handler)
       el.$destroyCopy = () => el.removeEventListener('click', handler)
     }
-  }
+  },
 }
 
 function copyTextToClipboard(input, { target = document.body } = {}) {

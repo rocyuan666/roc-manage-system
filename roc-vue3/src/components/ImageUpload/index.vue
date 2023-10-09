@@ -45,23 +45,23 @@ const props = defineProps({
   // 图片数量限制
   limit: {
     type: Number,
-    default: 5
+    default: 5,
   },
   // 大小限制(MB)
   fileSize: {
     type: Number,
-    default: 5
+    default: 5,
   },
   // 文件类型, 例如['png', 'jpg', 'jpeg']
   fileType: {
     type: Array,
-    default: () => ['png', 'jpg', 'jpeg']
+    default: () => ['png', 'jpg', 'jpeg'],
   },
   // 是否显示提示
   isShowTip: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 })
 
 const { proxy } = getCurrentInstance()
@@ -98,7 +98,7 @@ watch(
       return []
     }
   },
-  { deep: true, immediate: true }
+  { deep: true, immediate: true },
 )
 
 // 删除图片

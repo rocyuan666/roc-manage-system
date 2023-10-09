@@ -6,12 +6,12 @@ export default function createCompression(env) {
   if (VITE_BUILD_COMPRESS) {
     const compressList = VITE_BUILD_COMPRESS.split(',')
     if (compressList.includes('gzip')) {
-      // http://doc.ruoyi.vip/ruoyi-vue/other/faq.html#使用gzip解压缩静态文件
+      // 使用gzip解压缩静态文件
       plugin.push(
         compression({
           ext: '.gz',
-          deleteOriginFile: false
-        })
+          deleteOriginFile: false,
+        }),
       )
     }
     if (compressList.includes('brotli')) {
@@ -19,8 +19,8 @@ export default function createCompression(env) {
         compression({
           ext: '.br',
           algorithm: 'brotliCompress',
-          deleteOriginFile: false
-        })
+          deleteOriginFile: false,
+        }),
       )
     }
   }

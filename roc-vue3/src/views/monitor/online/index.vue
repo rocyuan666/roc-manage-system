@@ -67,7 +67,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="Delete"
             @click="handleForceLogout(scope.row)"
             v-hasPermi="['monitor:online:forceLogout']"
@@ -94,7 +94,7 @@ const pageSize = ref(10)
 
 const queryParams = ref({
   ipaddr: undefined,
-  userName: undefined
+  userName: undefined,
 })
 
 /** 查询登录日志列表 */

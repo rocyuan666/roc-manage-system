@@ -144,7 +144,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="View"
             @click="handleView(scope.row)"
             v-hasPermi="['monitor:job:query']"
@@ -226,8 +226,8 @@ const data = reactive({
     pageSize: 10,
     dictName: undefined,
     dictType: undefined,
-    status: undefined
-  }
+    status: undefined,
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -298,9 +298,9 @@ function handleExport() {
   proxy.download(
     'monitor/jobLog/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `job_log_${new Date().getTime()}.xlsx`
+    `job_log_${new Date().getTime()}.xlsx`,
   )
 }
 

@@ -67,7 +67,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2018-2022 ruoyi.vip All Rights Reserved.</span>
+      <span>Copyright © 2018-2022 All Rights Reserved.</span>
     </div>
   </div>
 </template>
@@ -87,13 +87,13 @@ const loginForm = ref({
   password: 'admin123',
   rememberMe: false,
   code: '',
-  uuid: ''
+  uuid: '',
 })
 
 const loginRules = {
   username: [{ required: true, trigger: 'blur', message: '请输入您的账号' }],
   password: [{ required: true, trigger: 'blur', message: '请输入您的密码' }],
-  code: [{ required: true, trigger: 'change', message: '请输入验证码' }]
+  code: [{ required: true, trigger: 'change', message: '请输入验证码' }],
 }
 
 const codeUrl = ref('')
@@ -153,7 +153,7 @@ function getCookie() {
   loginForm.value = {
     username: username === undefined ? loginForm.value.username : username,
     password: password === undefined ? loginForm.value.password : decrypt(password),
-    rememberMe: rememberMe === undefined ? false : Boolean(rememberMe)
+    rememberMe: rememberMe === undefined ? false : Boolean(rememberMe),
   }
 }
 

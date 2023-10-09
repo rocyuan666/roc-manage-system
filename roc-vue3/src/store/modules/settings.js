@@ -19,7 +19,7 @@ const useSettingsStore = defineStore('settings', {
     sidebarLogo:
       storageSetting.sidebarLogo === undefined ? sidebarLogo : storageSetting.sidebarLogo,
     dynamicTitle:
-      storageSetting.dynamicTitle === undefined ? dynamicTitle : storageSetting.dynamicTitle
+      storageSetting.dynamicTitle === undefined ? dynamicTitle : storageSetting.dynamicTitle,
   }),
   actions: {
     // 修改布局设置
@@ -34,8 +34,8 @@ const useSettingsStore = defineStore('settings', {
     setTitle(title) {
       this.title = title
       useDynamicTitle()
-    }
-  }
+    },
+  },
 })
 
 export default useSettingsStore

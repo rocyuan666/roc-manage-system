@@ -56,5 +56,5 @@ export default {
     return roles.every((item) => {
       return authRole(item)
     })
-  }
+  },
 }

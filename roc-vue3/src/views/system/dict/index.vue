@@ -142,14 +142,14 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button
-            type="text"
+            link
             icon="Edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:dict:edit']"
             >修改</el-button
           >
           <el-button
-            type="text"
+            link
             icon="Delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:dict:remove']"
@@ -204,7 +204,7 @@ import {
   delType,
   addType,
   updateType,
-  refreshCache
+  refreshCache,
 } from '@/api/system/dict/type'
 
 const { proxy } = getCurrentInstance()
@@ -228,12 +228,12 @@ const data = reactive({
     pageSize: 10,
     dictName: undefined,
     dictType: undefined,
-    status: undefined
+    status: undefined,
   },
   rules: {
     dictName: [{ required: true, message: '字典名称不能为空', trigger: 'blur' }],
-    dictType: [{ required: true, message: '字典类型不能为空', trigger: 'blur' }]
-  }
+    dictType: [{ required: true, message: '字典类型不能为空', trigger: 'blur' }],
+  },
 })
 
 const { queryParams, form, rules } = toRefs(data)
@@ -259,7 +259,7 @@ function reset() {
     dictName: undefined,
     dictType: undefined,
     status: '0',
-    remark: undefined
+    remark: undefined,
   }
   proxy.resetForm('dictRef')
 }
@@ -335,9 +335,9 @@ function handleExport() {
   proxy.download(
     'system/dict/type/export',
     {
-      ...queryParams.value
+      ...queryParams.value,
     },
-    `dict_${new Date().getTime()}.xlsx`
+    `dict_${new Date().getTime()}.xlsx`,
   )
 }
 /** 刷新缓存按钮操作 */

@@ -116,7 +116,7 @@
         <template #default="scope">
           <el-tooltip content="预览" placement="top">
             <el-button
-              type="text"
+              link
               icon="View"
               @click="handlePreview(scope.row)"
               v-hasPermi="['tool:gen:preview']"
@@ -124,7 +124,7 @@
           </el-tooltip>
           <el-tooltip content="编辑" placement="top">
             <el-button
-              type="text"
+              link
               icon="Edit"
               @click="handleEditTable(scope.row)"
               v-hasPermi="['tool:gen:edit']"
@@ -132,7 +132,7 @@
           </el-tooltip>
           <el-tooltip content="删除" placement="top">
             <el-button
-              type="text"
+              link
               icon="Delete"
               @click="handleDelete(scope.row)"
               v-hasPermi="['tool:gen:remove']"
@@ -140,7 +140,7 @@
           </el-tooltip>
           <el-tooltip content="同步" placement="top">
             <el-button
-              type="text"
+              link
               icon="Refresh"
               @click="handleSynchDb(scope.row)"
               v-hasPermi="['tool:gen:edit']"
@@ -148,7 +148,7 @@
           </el-tooltip>
           <el-tooltip content="生成代码" placement="top">
             <el-button
-              type="text"
+              link
               icon="Download"
               @click="handleGenTable(scope.row)"
               v-hasPermi="['tool:gen:code']"
@@ -171,7 +171,7 @@
       width="80%"
       top="5vh"
       append-to-body
-      custom-class="scrollbar"
+      class="scrollbar"
     >
       <el-tabs v-model="preview.activeName">
         <el-tab-pane
@@ -220,14 +220,14 @@ const data = reactive({
     pageNum: 1,
     pageSize: 10,
     tableName: undefined,
-    tableComment: undefined
+    tableComment: undefined,
   },
   preview: {
     open: false,
     title: '代码预览',
     data: {},
-    activeName: 'domain.java'
-  }
+    activeName: 'domain.java',
+  },
 })
 
 const { queryParams, preview } = toRefs(data)
@@ -269,7 +269,7 @@ function handleGenTable(row) {
       proxy.$modal.msgSuccess('成功生成到自定义路径：' + row.genPath)
     })
   } else {
-    proxy.$download.zip('/tool/gen/batchGenCode?tables=' + tbNames, 'ruoyi')
+    proxy.$download.zip('/tool/gen/batchGenCode?tables=' + tbNames, 'roc')
   }
 }
 /** 同步数据库操作 */
@@ -319,7 +319,7 @@ function handleEditTable(row) {
   const tableId = row.tableId || ids.value[0]
   router.push({
     path: '/tool/gen-edit/index/' + tableId,
-    query: { pageNum: queryParams.value.pageNum }
+    query: { pageNum: queryParams.value.pageNum },
   })
 }
 /** 删除按钮操作 */
