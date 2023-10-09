@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "DictTag",
+  name: 'DictTag',
   props: {
     options: {
       type: Array,
@@ -37,13 +37,13 @@ export default {
   computed: {
     values() {
       if (this.value !== null && typeof this.value !== 'undefined') {
-        return Array.isArray(this.value) ? this.value : [String(this.value)];
+        return Array.isArray(this.value) ? this.value : [String(this.value)]
       } else {
-        return [];
+        return []
       }
     },
   },
-};
+}
 </script>
 <style scoped>
 .el-tag + .el-tag {

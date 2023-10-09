@@ -9,13 +9,13 @@ export default {
   name: 'RocGit',
   data() {
     return {
-      url: 'https://gitee.com/rocyuan666/roc-manage-system'
+      url: 'https://gitee.com/rocyuan666/roc-manage-system',
     }
   },
   methods: {
     goto() {
       window.open(this.url)
-    }
-  }
+    },
+  },
 }
 </script>

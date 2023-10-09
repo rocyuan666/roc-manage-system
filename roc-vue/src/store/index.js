@@ -7,7 +7,7 @@ Vue.use(Vuex)
 // 不希望有命名空间的vuex模块
 const namespacedFalseList = ['permission', 'user']
 
-const modules = {};
+const modules = {}
 const files = require.context('./modules', false, /\.js$/)
 files.keys().forEach((url) => {
   const key = url.replace(/(modules\.|\/|\.|js)/g, '')

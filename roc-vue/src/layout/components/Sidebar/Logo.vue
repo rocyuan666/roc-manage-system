@@ -1,13 +1,37 @@
 <template>
-  <div class="sidebar-logo-container" :class="{'collapse':collapse}" :style="{ backgroundColor: sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground }">
+  <div
+    class="sidebar-logo-container"
+    :class="{ collapse: collapse }"
+    :style="{
+      backgroundColor:
+        sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground,
+    }"
+  >
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo" />
-        <h1 v-else class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor }">{{ title }} </h1>
+        <h1
+          v-else
+          class="sidebar-title"
+          :style="{
+            color:
+              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor,
+          }"
+        >
+          {{ title }}
+        </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo" />
-        <h1 class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor }">{{ title }} </h1>
+        <h1
+          class="sidebar-title"
+          :style="{
+            color:
+              sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor,
+          }"
+        >
+          {{ title }}
+        </h1>
       </router-link>
     </transition>
   </div>
@@ -22,23 +46,23 @@ export default {
   props: {
     collapse: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     variables() {
-      return variables;
+      return variables
     },
     sideTheme() {
       return this.$store.state.settings.sideTheme
-    }
+    },
   },
   data() {
     return {
       title: '大鹏管理系统',
-      logo: logoImg
+      logo: logoImg,
     }
-  }
+  },
 }
 </script>
 
@@ -79,7 +103,12 @@ export default {
       font-weight: 600;
       line-height: 50px;
       font-size: 14px;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-family:
+        Avenir,
+        Helvetica Neue,
+        Arial,
+        Helvetica,
+        sans-serif;
       vertical-align: middle;
     }
   }

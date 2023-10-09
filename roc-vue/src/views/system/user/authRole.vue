@@ -10,17 +10,24 @@
         </el-col>
         <el-col :span="8" :offset="2">
           <el-form-item label="登录账号" prop="userName">
-            <el-input  v-model="form.userName" disabled />
+            <el-input v-model="form.userName" disabled />
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
 
     <h4 class="form-header h4">角色信息</h4>
-    <el-table v-loading="loading" :row-key="getRowKey" @row-click="clickRow" ref="table" @selection-change="handleSelectionChange" :data="roles.slice((pageNum-1)*pageSize,pageNum*pageSize)">
+    <el-table
+      v-loading="loading"
+      :row-key="getRowKey"
+      @row-click="clickRow"
+      ref="table"
+      @selection-change="handleSelectionChange"
+      :data="roles.slice((pageNum - 1) * pageSize, pageNum * pageSize)"
+    >
       <el-table-column label="序号" type="index" align="center">
         <template slot-scope="scope">
-          <span>{{(pageNum - 1) * pageSize + scope.$index + 1}}</span>
+          <span>{{ (pageNum - 1) * pageSize + scope.$index + 1 }}</span>
         </template>
       </el-table-column>
       <el-table-column type="selection" :reserve-selection="true" width="55"></el-table-column>
@@ -33,11 +40,11 @@
         </template>
       </el-table-column>
     </el-table>
-    
-    <pagination v-show="total>0" :total="total" :page.sync="pageNum" :limit.sync="pageSize" />
+
+    <pagination v-show="total > 0" :total="total" :page.sync="pageNum" :limit.sync="pageSize" />
 
     <el-form label-width="100px">
-      <el-form-item style="text-align: center;margin-left:-120px;margin-top:30px;">
+      <el-form-item style="text-align: center; margin-left: -120px; margin-top: 30px">
         <el-button type="primary" @click="submitForm()">提交</el-button>
         <el-button @click="close()">返回</el-button>
       </el-form-item>
@@ -46,72 +53,72 @@
 </template>
 
 <script>
-import { getAuthRole, updateAuthRole } from "@/api/system/user";
+import { getAuthRole, updateAuthRole } from '@/api/system/user'
 
 export default {
-  name: "AuthRole",
+  name: 'AuthRole',
   data() {
     return {
-       // 遮罩层
+      // 遮罩层
       loading: true,
       // 分页信息
       total: 0,
       pageNum: 1,
       pageSize: 10,
       // 选中角色编号
-      roleIds:[],
+      roleIds: [],
       // 角色信息
       roles: [],
       // 用户信息
-      form: {}
-    };
+      form: {},
+    }
   },
   created() {
-    const userId = this.$route.params && this.$route.params.userId;
+    const userId = this.$route.params && this.$route.params.userId
     if (userId) {
-      this.loading = true;
+      this.loading = true
       getAuthRole(userId).then((response) => {
-        this.form = response.user;
-        this.roles = response.roles;
-        this.total = this.roles.length;
+        this.form = response.user
+        this.roles = response.roles
+        this.total = this.roles.length
         this.$nextTick(() => {
           this.roles.forEach((row) => {
             if (row.flag) {
-              this.$refs.table.toggleRowSelection(row);
+              this.$refs.table.toggleRowSelection(row)
             }
-          });
-        });
-        this.loading = false;
-      });
+          })
+        })
+        this.loading = false
+      })
     }
   },
   methods: {
     /** 单击选中行数据 */
     clickRow(row) {
-      this.$refs.table.toggleRowSelection(row);
+      this.$refs.table.toggleRowSelection(row)
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.roleIds = selection.map((item) => item.roleId);
+      this.roleIds = selection.map((item) => item.roleId)
     },
     // 保存选中的数据编号
     getRowKey(row) {
-      return row.roleId;
+      return row.roleId
     },
     /** 提交按钮 */
     submitForm() {
-      const userId = this.form.userId;
-      const roleIds = this.roleIds.join(",");
+      const userId = this.form.userId
+      const roleIds = this.roleIds.join(',')
       updateAuthRole({ userId: userId, roleIds: roleIds }).then((response) => {
-        this.$modal.msgSuccess("授权成功");
-        this.close();
-      });
+        this.$modal.msgSuccess('授权成功')
+        this.close()
+      })
     },
     /** 关闭按钮 */
     close() {
-      const obj = { path: "/system/user" };
-      this.$tab.closeOpenPage(obj);
+      const obj = { path: '/system/user' }
+      this.$tab.closeOpenPage(obj)
     },
   },
-};
+}
 </script>

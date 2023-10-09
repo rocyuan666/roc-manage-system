@@ -35,26 +35,18 @@ export default {
   props: {
     info: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       rules: {
-        tableName: [
-          { required: true, message: "请输入表名称", trigger: "blur" }
-        ],
-        tableComment: [
-          { required: true, message: "请输入表描述", trigger: "blur" }
-        ],
-        className: [
-          { required: true, message: "请输入实体类名称", trigger: "blur" }
-        ],
-        functionAuthor: [
-          { required: true, message: "请输入作者", trigger: "blur" }
-        ]
-      }
-    };
-  }
-};
+        tableName: [{ required: true, message: '请输入表名称', trigger: 'blur' }],
+        tableComment: [{ required: true, message: '请输入表描述', trigger: 'blur' }],
+        className: [{ required: true, message: '请输入实体类名称', trigger: 'blur' }],
+        functionAuthor: [{ required: true, message: '请输入作者', trigger: 'blur' }],
+      },
+    }
+  },
+}
 </script>

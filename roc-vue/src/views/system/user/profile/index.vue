@@ -25,7 +25,9 @@
               </li>
               <li class="list-group-item">
                 <svg-icon icon-class="tree" />所属部门
-                <div class="pull-right" v-if="user.dept">{{ user.dept.deptName }} / {{ postGroup }}</div>
+                <div class="pull-right" v-if="user.dept">
+                  {{ user.dept.deptName }} / {{ postGroup }}
+                </div>
               </li>
               <li class="list-group-item">
                 <svg-icon icon-class="peoples" />所属角色
@@ -59,33 +61,33 @@
 </template>
 
 <script>
-import userAvatar from "./userAvatar";
-import userInfo from "./userInfo";
-import resetPwd from "./resetPwd";
-import { getUserProfile } from "@/api/system/user";
+import userAvatar from './userAvatar'
+import userInfo from './userInfo'
+import resetPwd from './resetPwd'
+import { getUserProfile } from '@/api/system/user'
 
 export default {
-  name: "Profile",
+  name: 'Profile',
   components: { userAvatar, userInfo, resetPwd },
   data() {
     return {
       user: {},
       roleGroup: {},
       postGroup: {},
-      activeTab: "userinfo"
-    };
+      activeTab: 'userinfo',
+    }
   },
   created() {
-    this.getUser();
+    this.getUser()
   },
   methods: {
     getUser() {
-      getUserProfile().then(response => {
-        this.user = response.data;
-        this.roleGroup = response.roleGroup;
-        this.postGroup = response.postGroup;
-      });
-    }
-  }
-};
+      getUserProfile().then((response) => {
+        this.user = response.data
+        this.roleGroup = response.roleGroup
+        this.postGroup = response.postGroup
+      })
+    },
+  },
+}
 </script>

@@ -9,40 +9,16 @@
       @close="onClose"
     >
       <el-row :gutter="0">
-        <el-form
-          ref="elForm"
-          :model="formData"
-          :rules="rules"
-          size="small"
-          label-width="100px"
-        >
+        <el-form ref="elForm" :model="formData" :rules="rules" size="small" label-width="100px">
           <el-col :span="24">
-            <el-form-item
-              label="选项名"
-              prop="label"
-            >
-              <el-input
-                v-model="formData.label"
-                placeholder="请输入选项名"
-                clearable
-              />
+            <el-form-item label="选项名" prop="label">
+              <el-input v-model="formData.label" placeholder="请输入选项名" clearable />
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item
-              label="选项值"
-              prop="value"
-            >
-              <el-input
-                v-model="formData.value"
-                placeholder="请输入选项值"
-                clearable
-              >
-                <el-select
-                  slot="append"
-                  v-model="dataType"
-                  :style="{width: '100px'}"
-                >
+            <el-form-item label="选项值" prop="value">
+              <el-input v-model="formData.value" placeholder="请输入选项值" clearable>
+                <el-select slot="append" v-model="dataType" :style="{ width: '100px' }">
                   <el-option
                     v-for="(item, index) in dataTypeOptions"
                     :key="index"
@@ -57,15 +33,8 @@
         </el-form>
       </el-row>
       <div slot="footer">
-        <el-button
-          type="primary"
-          @click="handleConfirm"
-        >
-          确定
-        </el-button>
-        <el-button @click="close">
-          取消
-        </el-button>
+        <el-button type="primary" @click="handleConfirm"> 确定 </el-button>
+        <el-button @click="close"> 取消 </el-button>
       </div>
     </el-dialog>
   </div>
@@ -82,35 +51,35 @@ export default {
       id: 100,
       formData: {
         label: undefined,
-        value: undefined
+        value: undefined,
       },
       rules: {
         label: [
           {
             required: true,
             message: '请输入选项名',
-            trigger: 'blur'
-          }
+            trigger: 'blur',
+          },
         ],
         value: [
           {
             required: true,
             message: '请输入选项值',
-            trigger: 'blur'
-          }
-        ]
+            trigger: 'blur',
+          },
+        ],
       },
       dataType: 'string',
       dataTypeOptions: [
         {
           label: '字符串',
-          value: 'string'
+          value: 'string',
         },
         {
           label: '数字',
-          value: 'number'
-        }
-      ]
+          value: 'number',
+        },
+      ],
     }
   },
   computed: {},
@@ -118,7 +87,7 @@ export default {
     // eslint-disable-next-line func-names
     'formData.value': function (val) {
       this.dataType = isNumberStr(val) ? 'number' : 'string'
-    }
+    },
   },
   created() {},
   mounted() {},
@@ -126,7 +95,7 @@ export default {
     onOpen() {
       this.formData = {
         label: undefined,
-        value: undefined
+        value: undefined,
       }
     },
     onClose() {},
@@ -134,7 +103,7 @@ export default {
       this.$emit('update:visible', false)
     },
     handleConfirm() {
-      this.$refs.elForm.validate(valid => {
+      this.$refs.elForm.validate((valid) => {
         if (!valid) return
         if (this.dataType === 'number') {
           this.formData.value = parseFloat(this.formData.value)
@@ -143,7 +112,7 @@ export default {
         this.$emit('commit', this.formData)
         this.close()
       })
-    }
-  }
+    },
+  },
 }
 </script>
