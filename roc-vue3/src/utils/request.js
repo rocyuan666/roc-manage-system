@@ -13,7 +13,7 @@ export let isRelogin = { show: false }
 // api baseURL
 let baseURL = ''
 if (import.meta.env.DEV && import.meta.env.VITE_APP_PROXY === 'true') {
-  baseURL = '/dev-api'
+  baseURL = '/api'
 } else {
   baseURL = import.meta.env.VITE_APP_BASE_API
 }

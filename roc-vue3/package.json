@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "serve": "vite",
+    "build": "vite build --mode production",
     "build:prod": "vite build --mode production",
     "build:stage": "vite build --mode staging",
     "build:dev": "vite build --mode development",
