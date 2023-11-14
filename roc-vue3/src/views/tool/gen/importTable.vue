@@ -63,6 +63,7 @@
 </template>
 
 <script setup>
+import { ref, reactive, getCurrentInstance } from 'vue'
 import { listDbTable, importTable } from '@/api/tool/gen'
 
 const total = ref(0)

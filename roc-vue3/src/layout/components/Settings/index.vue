@@ -108,6 +108,7 @@
 </template>
 
 <script setup>
+import { computed, getCurrentInstance, ref } from 'vue'
 import '@/assets/styles/variables.module.scss'
 import 'element-plus/theme-chalk/index.css'
 import { useDynamicTitle } from '@/utils/dynamicTitle'

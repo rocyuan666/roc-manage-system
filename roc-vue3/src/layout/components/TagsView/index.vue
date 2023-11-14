@@ -40,11 +40,13 @@
 </template>
 
 <script setup>
+import { computed, getCurrentInstance, nextTick, onMounted, ref, watch } from 'vue'
 import ScrollPane from './ScrollPane'
 import { getNormalPath } from '@/utils/roc'
 import useTagsViewStore from '@/store/modules/tagsView'
 import useSettingsStore from '@/store/modules/settings'
 import usePermissionStore from '@/store/modules/permission'
+import { useRoute, useRouter } from 'vue-router'
 
 const visible = ref(false)
 const top = ref(0)

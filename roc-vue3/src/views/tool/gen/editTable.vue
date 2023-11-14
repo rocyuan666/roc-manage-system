@@ -130,6 +130,8 @@
 </template>
 
 <script setup name="GenEdit">
+import { ref, getCurrentInstance } from 'vue'
+import { useRoute } from 'vue-router'
 import { getGenTable, updateGenTable } from '@/api/tool/gen'
 import { optionselect as getDictOptionselect } from '@/api/system/dict/type'
 import basicInfoForm from './basicInfoForm'

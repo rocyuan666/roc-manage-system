@@ -23,6 +23,7 @@
 </template>
 
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
 import { updateUserProfile } from '@/api/system/user'
 
 const props = defineProps({

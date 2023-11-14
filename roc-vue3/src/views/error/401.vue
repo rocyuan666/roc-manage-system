@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
 import errImage from '@/assets/401_images/401.gif'
 
 let { proxy } = getCurrentInstance()

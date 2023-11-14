@@ -10,6 +10,7 @@
 </template>
 
 <script setup>
+import { computed, getCurrentInstance, onBeforeUnmount, onMounted, ref } from 'vue'
 import useTagsViewStore from '@/store/modules/tagsView'
 
 const tagAndTagSpacing = ref(4)
@@ -29,7 +30,7 @@ function handleScroll(e) {
   const $scrollWrapper = scrollWrapper.value
   $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4
 }
-const emits = defineEmits()
+const emits = defineEmits(['scroll'])
 const emitScroll = () => {
   emits('scroll')
 }

@@ -149,6 +149,7 @@
 </template>
 
 <script setup name="Logininfor">
+import { ref, getCurrentInstance } from 'vue'
 import { list, delLogininfor, cleanLogininfor } from '@/api/monitor/logininfor'
 
 const { proxy } = getCurrentInstance()

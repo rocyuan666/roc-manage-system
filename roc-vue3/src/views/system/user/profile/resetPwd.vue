@@ -32,6 +32,7 @@
 </template>
 
 <script setup>
+import { ref, reactive, getCurrentInstance } from 'vue'
 import { updateUserPwd } from '@/api/system/user'
 
 const { proxy } = getCurrentInstance()

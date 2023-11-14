@@ -252,6 +252,7 @@
 </template>
 
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
 import { getServer } from '@/api/monitor/server'
 
 const server = ref([])

@@ -199,6 +199,8 @@
 </template>
 
 <script setup name="Data">
+import { ref, reactive, toRefs, getCurrentInstance } from 'vue'
+import { useRoute } from 'vue-router'
 import { optionselect as getDictOptionselect, getType } from '@/api/system/dict/type'
 import { listData, getData, delData, addData, updateData } from '@/api/system/dict/data'
 

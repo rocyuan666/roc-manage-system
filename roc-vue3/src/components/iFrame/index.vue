@@ -5,6 +5,8 @@
 </template>
 
 <script setup>
+import { computed, onMounted, ref } from 'vue'
+
 const props = defineProps({
   src: {
     type: String,

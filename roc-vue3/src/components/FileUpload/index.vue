@@ -51,6 +51,7 @@
 </template>
 
 <script setup>
+import { computed, getCurrentInstance, ref, watch } from 'vue'
 import { getToken } from '@/utils/auth'
 
 const props = defineProps({
@@ -78,7 +79,7 @@ const props = defineProps({
 })
 
 const { proxy } = getCurrentInstance()
-const emit = defineEmits()
+const emit = defineEmits(['update:modelValue'])
 const number = ref(0)
 const uploadList = ref([])
 const baseUrl = import.meta.env.VITE_APP_BASE_API

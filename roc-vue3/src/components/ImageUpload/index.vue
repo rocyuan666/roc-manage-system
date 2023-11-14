@@ -39,6 +39,7 @@
 
 <script setup>
 import { getToken } from '@/utils/auth'
+import { computed, getCurrentInstance, ref, watch } from 'vue'
 
 const props = defineProps({
   modelValue: [String, Object, Array],
@@ -65,7 +66,7 @@ const props = defineProps({
 })
 
 const { proxy } = getCurrentInstance()
-const emit = defineEmits()
+const emit = defineEmits(['update:modelValue'])
 const number = ref(0)
 const uploadList = ref([])
 const dialogImageUrl = ref('')

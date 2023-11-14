@@ -181,6 +181,7 @@
 </template>
 
 <script setup name="Notice">
+import { ref, reactive, toRefs, getCurrentInstance } from 'vue'
 import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/system/notice'
 
 const { proxy } = getCurrentInstance()

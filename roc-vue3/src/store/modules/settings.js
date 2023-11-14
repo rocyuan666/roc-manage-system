@@ -1,3 +1,4 @@
+import { defineStore } from 'pinia'
 import defaultSettings from '@/settings'
 import { useDynamicTitle } from '@/utils/dynamicTitle'
 
@@ -25,8 +26,7 @@ const useSettingsStore = defineStore('settings', {
     // 修改布局设置
     changeSetting(data) {
       const { key, value } = data
-      // eslint-disable-next-line no-prototype-builtins
-      if (this.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(this, key)) {
         this[key] = value
       }
     },

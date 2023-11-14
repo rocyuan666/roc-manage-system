@@ -14,6 +14,9 @@
 </template>
 
 <script setup>
+import { ref, watchEffect } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
 const route = useRoute()
 const router = useRouter()
 const levelList = ref([])

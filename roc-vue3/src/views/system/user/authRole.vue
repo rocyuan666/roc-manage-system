@@ -53,6 +53,8 @@
 </template>
 
 <script setup name="AuthRole">
+import { ref, getCurrentInstance } from 'vue'
+import { useRoute } from 'vue-router'
 import { getAuthRole, updateAuthRole } from '@/api/system/user'
 
 const route = useRoute()

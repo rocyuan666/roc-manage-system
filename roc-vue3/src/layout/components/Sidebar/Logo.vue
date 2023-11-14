@@ -38,6 +38,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import variables from '@/assets/styles/variables.module.scss'
 import logo from '@/assets/logo/logo.png'
 import useSettingsStore from '@/store/modules/settings'
@@ -49,7 +50,7 @@ defineProps({
   },
 })
 
-const title = ref('大鹏管理系统')
+const title = import.meta.env.VITE_APP_TITLE
 const settingsStore = useSettingsStore()
 const sideTheme = computed(() => settingsStore.sideTheme)
 </script>

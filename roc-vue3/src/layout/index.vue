@@ -18,10 +18,10 @@
 </template>
 
 <script setup>
+import { computed, ref, watchEffect } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import Sidebar from './components/Sidebar/index.vue'
 import { AppMain, Navbar, Settings, TagsView } from './components'
-
 import useAppStore from '@/store/modules/app'
 import useSettingsStore from '@/store/modules/settings'
 

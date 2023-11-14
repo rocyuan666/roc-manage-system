@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { isExternal } from '@/utils/validate'
 import AppLink from './Link'
 import { getNormalPath } from '@/utils/roc'

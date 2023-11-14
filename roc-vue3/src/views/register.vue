@@ -5,7 +5,7 @@
       <el-form-item prop="username">
         <el-input
           v-model="registerForm.username"
-          type="text"
+          link
           size="large"
           auto-complete="off"
           placeholder="账号"
@@ -84,6 +84,8 @@
 </template>
 
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import { getCodeImg, register } from '@/api/login'
 
@@ -148,7 +150,7 @@ function handleRegister() {
         })
         .catch(() => {
           loading.value = false
-          if (captchaOnOff) {
+          if (captchaOnOff.value) {
             getCode()
           }
         })

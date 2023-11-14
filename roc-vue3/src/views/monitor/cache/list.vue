@@ -134,6 +134,7 @@
 </template>
 
 <script setup name="CacheList">
+import { ref, getCurrentInstance } from 'vue'
 import {
   listCacheName,
   listCacheKey,

@@ -334,6 +334,8 @@
 </template>
 
 <script setup name="Job">
+import { ref, reactive, toRefs, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import {
   listJob,
   getJob,

@@ -198,6 +198,7 @@
 </template>
 
 <script setup name="Dict">
+import { ref, reactive, toRefs, getCurrentInstance } from 'vue'
 import {
   listType,
   getType,

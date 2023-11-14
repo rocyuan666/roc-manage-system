@@ -82,6 +82,7 @@
 </template>
 
 <script setup name="Online">
+import { ref, getCurrentInstance } from 'vue'
 import { forceLogout, list as initData } from '@/api/monitor/online'
 
 const { proxy } = getCurrentInstance()

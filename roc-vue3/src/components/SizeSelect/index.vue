@@ -22,6 +22,8 @@
 
 <script setup>
 import useAppStore from '@/store/modules/app'
+import { computed, getCurrentInstance, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const appStore = useAppStore()
 const size = computed(() => appStore.size)

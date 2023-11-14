@@ -5,7 +5,7 @@
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
-          type="text"
+          link
           size="large"
           auto-complete="off"
           placeholder="账号"
@@ -73,6 +73,8 @@
 </template>
 
 <script setup>
+import { ref, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import { getCodeImg } from '@/api/login'
 import Cookies from 'js-cookie'
 import { encrypt, decrypt } from '@/utils/jsencrypt'

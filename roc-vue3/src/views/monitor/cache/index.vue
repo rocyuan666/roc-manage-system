@@ -103,6 +103,7 @@
 </template>
 
 <script setup name="Cache">
+import { ref, getCurrentInstance } from 'vue'
 import { getCache } from '@/api/monitor/cache'
 import * as echarts from 'echarts'
 

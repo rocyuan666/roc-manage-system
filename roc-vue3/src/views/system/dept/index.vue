@@ -76,7 +76,7 @@
           >
           <el-button
             v-if="scope.row.parentId != 0"
-            type="text"
+            link
             icon="Delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:dept:remove']"
@@ -152,6 +152,7 @@
 </template>
 
 <script setup name="Dept">
+import { ref, reactive, toRefs, getCurrentInstance } from 'vue'
 import {
   listDept,
   getDept,
