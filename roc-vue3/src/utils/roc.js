@@ -1,8 +1,16 @@
+import { isRef } from 'vue'
+import BigNumber from 'bignumber.js'
+
 /**
  * 通用js方法封装处理
  */
 
-// 日期格式化
+/**
+ * 日期格式化
+ * @param {Object | String | Number} time
+ * @param {String} pattern
+ * @returns {String}
+ */
 export function parseTime(time, pattern) {
   if (arguments.length === 0 || !time) {
     return null
@@ -48,14 +56,23 @@ export function parseTime(time, pattern) {
   return time_str
 }
 
-// 表单重置
+/**
+ * 表单重置
+ * @param {import("vue").Ref<String>} refName
+ */
 export function resetForm(refName) {
   if (this.$refs[refName]) {
     this.$refs[refName].resetFields()
   }
 }
 
-// 添加日期范围
+/**
+ * 添加日期范围
+ * @param {Object} params
+ * @param {Array} dateRange
+ * @param {String} propName
+ * @returns {Object}
+ */
 export function addDateRange(params, dateRange, propName) {
   let search = params
   search.params =
@@ -73,7 +90,12 @@ export function addDateRange(params, dateRange, propName) {
   return search
 }
 
-// 回显数据字典
+/**
+ * 回显数据字典
+ * @param {Object<T>} datas
+ * @param {String} value
+ * @returns {String}
+ */
 export function selectDictLabel(datas, value) {
   if (value === undefined) {
     return ''
@@ -91,7 +113,13 @@ export function selectDictLabel(datas, value) {
   return actions.join('')
 }
 
-// 回显数据字典（字符串数组）
+/**
+ * 回显数据字典（字符串数组）
+ * @param {Object} datas
+ * @param {String} value
+ * @param {String} separator
+ * @returns {String}
+ */
 export function selectDictLabels(datas, value, separator) {
   if (value === undefined) {
     return ''
@@ -114,7 +142,11 @@ export function selectDictLabels(datas, value, separator) {
   return actions.join('').substring(0, actions.join('').length - 1)
 }
 
-// 字符串格式化(%s )
+/**
+ * 字符串格式化(%s )
+ * @param {String} str
+ * @returns
+ */
 export function sprintf(str) {
   var args = arguments,
     flag = true,
@@ -130,7 +162,11 @@ export function sprintf(str) {
   return flag ? str : ''
 }
 
-// 转换字符串，undefined,null等转化为""
+/**
+ * 转换字符串，undefined,null等转化为""
+ * @param {String} str
+ * @returns {String}
+ */
 export function parseStrEmpty(str) {
   if (!str || str == 'undefined' || str == 'null') {
     return ''
@@ -138,7 +174,12 @@ export function parseStrEmpty(str) {
   return str
 }
 
-// 数据合并
+/**
+ * 数据合并
+ * @param {Object} source
+ * @param {Object} target
+ * @returns {Object}
+ */
 export function mergeRecursive(source, target) {
   for (var p in target) {
     try {
@@ -231,7 +272,11 @@ export function tansParams(params) {
   return result
 }
 
-// 返回项目路径
+/**
+ * 返回项目路径
+ * @param {String} p
+ * @returns {String}
+ */
 export function getNormalPath(p) {
   if (p.length === 0 || !p || p == 'undefined') {
     return p
@@ -243,7 +288,11 @@ export function getNormalPath(p) {
   return res
 }
 
-// 验证是否为blob格式
+/**
+ * 验证是否为blob格式
+ * @param {Object} data
+ * @returns {Boolean}
+ */
 export async function blobValidate(data) {
   try {
     const text = await data.text()
@@ -252,4 +301,131 @@ export async function blobValidate(data) {
   } catch (error) {
     return true
   }
+}
+
+/**
+ * 经过打包处理的文件路径获取，支持"@/"别名 与 assets/...直接写的方式
+ * @param {String} filePath - 相对于src的文件路径
+ * @returns {String} - 完整的路径
+ */
+export function rocRequire(filePath) {
+  let url = ''
+  if (filePath.indexOf('@/') !== -1) {
+    const newFilePath = filePath.replace('@/', '')
+    url = new URL(`../${newFilePath}`, import.meta.url)
+  } else {
+    url = new URL(`../${filePath}`, import.meta.url)
+  }
+  return url.href
+}
+
+/**
+ * 字典数据转换为对象形式
+ * @param {Array[{}]} labelValue
+ * @returns {Object}
+ */
+export function labelValueToKeyValue(labelValue) {
+  let newLabelValue = []
+  if (isRef(labelValue)) {
+    newLabelValue = labelValue.value
+  } else {
+    newLabelValue = labelValue
+  }
+  const obj = {}
+  if (Array.isArray(newLabelValue)) {
+    newLabelValue.map((item) => {
+      obj[item.value] = item.label
+    })
+  }
+  return obj
+}
+
+/**
+ * 字符串分割数组
+ * 支持指定分隔符
+ * 支持指定数组中值的类型
+ * @param {String} str
+ * @param {String} dot
+ * @param {"String" | "Number" | "Boolean"} type
+ * @returns {String[] | Number[] | Boolean[]}
+ */
+export function string2Array(str, dot = ',', type = 'String') {
+  let arr
+  if (str.trim()) {
+    arr = str.split(dot)
+  } else {
+    arr = []
+  }
+  return arr.map((value) => {
+    switch (type) {
+      case 'String':
+        return String(value)
+      case 'Number':
+        return Number(value)
+      case 'Boolean':
+        return Boolean(value)
+      default:
+        return value
+    }
+  })
+}
+
+/**
+ * 两数运算 指定保留小数
+ * 默认 相乘 保留3位小数
+ * @param {Number | String} num1
+ * @param {Number | String} num2
+ * @param {Object} options
+ * @param {Number | String} options.decimal
+ * @param {"plus" | "minus" | "times" | "div"} options.type
+ * @returns {Number}
+ */
+export function calc(num1, num2, options = { decimal: 3, type: 'times' }) {
+  let _num1 = Number(num1)
+  let _num2 = Number(num2)
+  let _decimal = Number(options.decimal)
+  const _type = options.type
+
+  if (isNaN(_num1)) _num1 = 0
+  if (isNaN(_num2)) _num2 = 0
+  if (isNaN(_decimal)) _decimal = 0
+
+  const num1BigNumber = new BigNumber(_num1)
+
+  if (_type === 'plus') {
+    return Number(num1BigNumber.plus(_num2).toFixed(_decimal))
+  } else if (_type === 'minus') {
+    return Number(num1BigNumber.minus(_num2).toFixed(_decimal))
+  } else if (_type === 'times') {
+    return Number(num1BigNumber.times(_num2).toFixed(_decimal))
+  } else if (_type === 'div') {
+    return Number(num1BigNumber.div(_num2).toFixed(_decimal))
+  } else {
+    return 0
+  }
+}
+
+/**
+ * 下载文件
+ * @param {String} url - 地址
+ * @param {String} fileName - 文件名
+ * @param {String} type - 类型 默认pdf
+ */
+export function downloadFile(url, fileName, type = 'pdf') {
+  let xhr = new XMLHttpRequest()
+  xhr.open('get', url, true)
+  xhr.setRequestHeader('Content-Type', `application/${type}`)
+  xhr.responseType = 'blob'
+  xhr.onload = function () {
+    if (this.status === 200) {
+      const blob = this.response
+      const blobUrl = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = blobUrl
+      a.download = fileName
+      a.click()
+      window.URL.revokeObjectURL(blobUrl)
+    }
+  }
+  xhr.send()
 }
