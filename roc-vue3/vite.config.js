@@ -4,7 +4,7 @@ import createVitePlugins from './vite/plugins'
 
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, fileURLToPath(new URL('./', import.meta.url)))
-  const { VITE_APP_ENV, VITE_APP_PROXY, VITE_APP_BASE_API } = env
+  const { VITE_APP_ENV, VITE_APP_PROXY, VITE_APP_BASE_API, VITE_APP_PORT } = env
 
   const viteConfig = {
     base: VITE_APP_ENV === 'production' ? './' : './',
@@ -34,7 +34,7 @@ export default defineConfig(({ mode, command }) => {
       drop: mode === 'production' ? ['console', 'debugger'] : [],
     },
     server: {
-      port: 8080,
+      port: VITE_APP_PORT,
       host: true,
       open: true,
       proxy: {
