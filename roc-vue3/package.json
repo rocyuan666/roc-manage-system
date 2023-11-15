@@ -4,6 +4,7 @@
   "description": "大鹏管理系统",
   "author": "rocyuan",
   "license": "MIT",
+  "web-types": "./web-types.json",
   "scripts": {
     "dev": "vite",
     "serve": "vite",

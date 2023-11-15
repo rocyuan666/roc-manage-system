@@ -79,7 +79,7 @@
           icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['system:operlog:remove']"
+          v-hasPermit="['system:operlog:remove']"
           >删除</el-button
         >
       </el-col>
@@ -89,7 +89,7 @@
           plain
           icon="Delete"
           @click="handleClean"
-          v-hasPermi="['system:operlog:remove']"
+          v-hasPermit="['system:operlog:remove']"
           >清空</el-button
         >
       </el-col>
@@ -99,7 +99,7 @@
           plain
           icon="Download"
           @click="handleExport"
-          v-hasPermi="['system:operlog:export']"
+          v-hasPermit="['system:operlog:export']"
           >导出</el-button
         >
       </el-col>
@@ -162,7 +162,7 @@
             link
             icon="View"
             @click="handleView(scope.row, scope.index)"
-            v-hasPermi="['system:operlog:query']"
+            v-hasPermit="['system:operlog:query']"
             >详细</el-button
           >
         </template>

@@ -32,7 +32,7 @@
           plain
           icon="Plus"
           @click="handleAdd"
-          v-hasPermi="['system:dept:add']"
+          v-hasPermit="['system:dept:add']"
           >新增</el-button
         >
       </el-col>
@@ -68,10 +68,10 @@
             link
             icon="Edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['system:dept:edit']"
+            v-hasPermit="['system:dept:edit']"
             >修改</el-button
           >
-          <el-button link icon="Plus" @click="handleAdd(scope.row)" v-hasPermi="['system:dept:add']"
+          <el-button link icon="Plus" @click="handleAdd(scope.row)" v-hasPermit="['system:dept:add']"
             >新增</el-button
           >
           <el-button
@@ -79,7 +79,7 @@
             link
             icon="Delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['system:dept:remove']"
+            v-hasPermit="['system:dept:remove']"
             >删除</el-button
           >
         </template>

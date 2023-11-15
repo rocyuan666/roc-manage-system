@@ -1,9 +1,9 @@
 import hasRole from './permission/hasRole'
-import hasPermi from './permission/hasPermi'
+import hasPermit from './permission/hasPermit'
 import copyText from './common/copyText'
 
 export default function directive(app) {
   app.directive('hasRole', hasRole)
-  app.directive('hasPermi', hasPermi)
+  app.directive('hasPermit', hasPermit)
   app.directive('copyText', copyText)
 }

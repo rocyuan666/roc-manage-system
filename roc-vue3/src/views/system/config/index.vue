@@ -58,7 +58,7 @@
           plain
           icon="Plus"
           @click="handleAdd"
-          v-hasPermi="['system:config:add']"
+          v-hasPermit="['system:config:add']"
           >新增</el-button
         >
       </el-col>
@@ -69,7 +69,7 @@
           icon="Edit"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['system:config:edit']"
+          v-hasPermit="['system:config:edit']"
           >修改</el-button
         >
       </el-col>
@@ -80,7 +80,7 @@
           icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['system:config:remove']"
+          v-hasPermit="['system:config:remove']"
           >删除</el-button
         >
       </el-col>
@@ -90,7 +90,7 @@
           plain
           icon="Download"
           @click="handleExport"
-          v-hasPermi="['system:config:export']"
+          v-hasPermit="['system:config:export']"
           >导出</el-button
         >
       </el-col>
@@ -100,7 +100,7 @@
           plain
           icon="Refresh"
           @click="handleRefreshCache"
-          v-hasPermi="['system:config:remove']"
+          v-hasPermit="['system:config:remove']"
           >刷新缓存</el-button
         >
       </el-col>
@@ -145,14 +145,14 @@
             link
             icon="Edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['system:config:edit']"
+            v-hasPermit="['system:config:edit']"
             >修改</el-button
           >
           <el-button
             link
             icon="Delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['system:config:remove']"
+            v-hasPermit="['system:config:remove']"
             >删除</el-button
           >
         </template>

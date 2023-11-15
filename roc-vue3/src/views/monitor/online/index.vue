@@ -70,7 +70,7 @@
             link
             icon="Delete"
             @click="handleForceLogout(scope.row)"
-            v-hasPermi="['monitor:online:forceLogout']"
+            v-hasPermit="['monitor:online:forceLogout']"
             >强退</el-button
           >
         </template>

@@ -70,7 +70,7 @@
           icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['monitor:job:remove']"
+          v-hasPermit="['monitor:job:remove']"
           >删除</el-button
         >
       </el-col>
@@ -80,7 +80,7 @@
           plain
           icon="Delete"
           @click="handleClean"
-          v-hasPermi="['monitor:job:remove']"
+          v-hasPermit="['monitor:job:remove']"
           >清空</el-button
         >
       </el-col>
@@ -90,7 +90,7 @@
           plain
           icon="Download"
           @click="handleExport"
-          v-hasPermi="['monitor:job:export']"
+          v-hasPermit="['monitor:job:export']"
           >导出</el-button
         >
       </el-col>
@@ -147,7 +147,7 @@
             link
             icon="View"
             @click="handleView(scope.row)"
-            v-hasPermi="['monitor:job:query']"
+            v-hasPermit="['monitor:job:query']"
             >详细</el-button
           >
         </template>

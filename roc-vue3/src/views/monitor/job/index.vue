@@ -48,7 +48,7 @@
           plain
           icon="Plus"
           @click="handleAdd"
-          v-hasPermi="['monitor:job:add']"
+          v-hasPermit="['monitor:job:add']"
           >新增</el-button
         >
       </el-col>
@@ -59,7 +59,7 @@
           icon="Edit"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['monitor:job:edit']"
+          v-hasPermit="['monitor:job:edit']"
           >修改</el-button
         >
       </el-col>
@@ -70,7 +70,7 @@
           icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['monitor:job:remove']"
+          v-hasPermit="['monitor:job:remove']"
           >删除</el-button
         >
       </el-col>
@@ -80,7 +80,7 @@
           plain
           icon="Download"
           @click="handleExport"
-          v-hasPermi="['monitor:job:export']"
+          v-hasPermit="['monitor:job:export']"
           >导出</el-button
         >
       </el-col>
@@ -90,7 +90,7 @@
           plain
           icon="Operation"
           @click="handleJobLog"
-          v-hasPermi="['monitor:job:query']"
+          v-hasPermit="['monitor:job:query']"
           >日志</el-button
         >
       </el-col>
@@ -145,7 +145,7 @@
               link
               icon="Edit"
               @click="handleUpdate(scope.row)"
-              v-hasPermi="['monitor:job:edit']"
+              v-hasPermit="['monitor:job:edit']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="删除" placement="top">
@@ -153,7 +153,7 @@
               link
               icon="Delete"
               @click="handleDelete(scope.row)"
-              v-hasPermi="['monitor:job:remove']"
+              v-hasPermit="['monitor:job:remove']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="执行一次" placement="top">
@@ -161,7 +161,7 @@
               link
               icon="CaretRight"
               @click="handleRun(scope.row)"
-              v-hasPermi="['monitor:job:changeStatus']"
+              v-hasPermit="['monitor:job:changeStatus']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="任务详细" placement="top">
@@ -169,7 +169,7 @@
               link
               icon="View"
               @click="handleView(scope.row)"
-              v-hasPermi="['monitor:job:query']"
+              v-hasPermit="['monitor:job:query']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="调度日志" placement="top">
@@ -177,7 +177,7 @@
               link
               icon="Operation"
               @click="handleJobLog(scope.row)"
-              v-hasPermi="['monitor:job:query']"
+              v-hasPermit="['monitor:job:query']"
             ></el-button>
           </el-tooltip>
         </template>

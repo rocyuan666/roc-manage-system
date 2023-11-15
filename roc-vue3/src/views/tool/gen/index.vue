@@ -46,7 +46,7 @@
           plain
           icon="Download"
           @click="handleGenTable"
-          v-hasPermi="['tool:gen:code']"
+          v-hasPermit="['tool:gen:code']"
           >生成</el-button
         >
       </el-col>
@@ -56,7 +56,7 @@
           plain
           icon="Upload"
           @click="openImportTable"
-          v-hasPermi="['tool:gen:import']"
+          v-hasPermit="['tool:gen:import']"
           >导入</el-button
         >
       </el-col>
@@ -67,7 +67,7 @@
           icon="Edit"
           :disabled="single"
           @click="handleEditTable"
-          v-hasPermi="['tool:gen:edit']"
+          v-hasPermit="['tool:gen:edit']"
           >修改</el-button
         >
       </el-col>
@@ -78,7 +78,7 @@
           icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['tool:gen:remove']"
+          v-hasPermit="['tool:gen:remove']"
           >删除</el-button
         >
       </el-col>
@@ -119,7 +119,7 @@
               link
               icon="View"
               @click="handlePreview(scope.row)"
-              v-hasPermi="['tool:gen:preview']"
+              v-hasPermit="['tool:gen:preview']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="编辑" placement="top">
@@ -127,7 +127,7 @@
               link
               icon="Edit"
               @click="handleEditTable(scope.row)"
-              v-hasPermi="['tool:gen:edit']"
+              v-hasPermit="['tool:gen:edit']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="删除" placement="top">
@@ -135,7 +135,7 @@
               link
               icon="Delete"
               @click="handleDelete(scope.row)"
-              v-hasPermi="['tool:gen:remove']"
+              v-hasPermit="['tool:gen:remove']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="同步" placement="top">
@@ -143,7 +143,7 @@
               link
               icon="Refresh"
               @click="handleSynchDb(scope.row)"
-              v-hasPermi="['tool:gen:edit']"
+              v-hasPermit="['tool:gen:edit']"
             ></el-button>
           </el-tooltip>
           <el-tooltip content="生成代码" placement="top">
@@ -151,7 +151,7 @@
               link
               icon="Download"
               @click="handleGenTable(scope.row)"
-              v-hasPermi="['tool:gen:code']"
+              v-hasPermit="['tool:gen:code']"
             ></el-button>
           </el-tooltip>
         </template>

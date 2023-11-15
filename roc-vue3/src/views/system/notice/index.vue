@@ -46,7 +46,7 @@
           plain
           icon="Plus"
           @click="handleAdd"
-          v-hasPermi="['system:notice:add']"
+          v-hasPermit="['system:notice:add']"
           >新增</el-button
         >
       </el-col>
@@ -57,7 +57,7 @@
           icon="Edit"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['system:notice:edit']"
+          v-hasPermit="['system:notice:edit']"
           >修改</el-button
         >
       </el-col>
@@ -68,7 +68,7 @@
           icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['system:notice:remove']"
+          v-hasPermit="['system:notice:remove']"
           >删除</el-button
         >
       </el-col>
@@ -106,14 +106,14 @@
             link
             icon="Edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['system:notice:edit']"
+            v-hasPermit="['system:notice:edit']"
             >修改</el-button
           >
           <el-button
             link
             icon="Delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['system:notice:remove']"
+            v-hasPermit="['system:notice:remove']"
             >删除</el-button
           >
         </template>
