@@ -9,15 +9,6 @@
 
 [github](https://github.com/rocyuan666/roc-manage-system) 与 [gitee](https://gitee.com/rocyuan666/roc-manage-system)，两仓库同步提交。
 
-## 预览
-
-` 账号：admin 密码：admin123 `
-
-vue预览地址：[http://rms.luojing.top](http://rms.luojing.top)
-
-uniapp多平台预览：敬请期待...
-
-
 ## 目录
 * roc: java后端项目代码
 * roc-vue： vue项目代码
