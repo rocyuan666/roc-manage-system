@@ -5,6 +5,9 @@ import Cookies from 'js-cookie'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs' // 中文语言
 
+import VForm3 from 'vform3-builds' //引入VForm 3库
+import 'vform3-builds/dist/designer.style.css' //引入VForm3样式
+
 import '@/assets/styles/index.scss' // global css
 
 import App from './App'
@@ -83,5 +86,6 @@ app.use(ElementPlus, {
   // 支持 large、default、small
   size: Cookies.get('size') || 'default',
 })
+app.use(VForm3)
 
 app.mount('#app')
