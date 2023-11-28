@@ -1,12 +1,11 @@
 {
   "name": "roc-manage-system",
   "version": "1.0.0",
+  "author": "rocyuan",
   "description": "大鹏管理系统",
   "main": "index.js",
   "scripts": {
     "git:push": "node script/gitpush.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": []
 }
