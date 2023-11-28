@@ -35,7 +35,7 @@
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.4",
-    "roc-utils": "^0.2.5",
+    "roc-utils": "^0.2.7",
     "vue": "^3.3.4",
     "vue-cropper": "^1.0.9",
     "vue-router": "^4.2.4"
