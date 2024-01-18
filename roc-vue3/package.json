@@ -35,7 +35,7 @@
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.4",
-    "roc-utils": "^2.0.2",
+    "roc-utils": "^2.0.3",
     "vform3-builds": "^3.0.10",
     "vue": "^3.3.4",
     "vue-cropper": "^1.0.9",
