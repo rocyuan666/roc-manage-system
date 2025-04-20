@@ -12,9 +12,11 @@ import top.rocyuan.common.core.domain.AjaxResult;
 import top.rocyuan.common.core.domain.entity.SysMenu;
 import top.rocyuan.common.core.domain.entity.SysUser;
 import top.rocyuan.common.core.domain.model.LoginBody;
+import top.rocyuan.common.core.domain.model.LoginUser;
 import top.rocyuan.common.utils.SecurityUtils;
 import top.rocyuan.framework.web.service.SysLoginService;
 import top.rocyuan.framework.web.service.SysPermissionService;
+import top.rocyuan.framework.web.service.TokenService;
 import top.rocyuan.system.service.ISysMenuService;
 
 /**
@@ -33,6 +35,9 @@ public class SysLoginController
 
     @Autowired
     private SysPermissionService permissionService;
+
+    @Autowired
+    private TokenService tokenService;
 
     /**
      * 登录方法
@@ -59,11 +64,17 @@ public class SysLoginController
     @GetMapping("getInfo")
     public AjaxResult getInfo()
     {
-        SysUser user = SecurityUtils.getLoginUser().getUser();
+        LoginUser loginUser = SecurityUtils.getLoginUser();
+        SysUser user = loginUser.getUser();
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(user);
         // 权限集合
         Set<String> permissions = permissionService.getMenuPermission(user);
+        if (!loginUser.getPermissions().equals(permissions))
+        {
+            loginUser.setPermissions(permissions);
+            tokenService.refreshToken(loginUser);
+        }
         AjaxResult ajax = AjaxResult.success();
         ajax.put("user", user);
         ajax.put("roles", roles);

@@ -3,10 +3,12 @@ package top.rocyuan.framework.web.service;
 import java.util.Set;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import top.rocyuan.common.constant.Constants;
 import top.rocyuan.common.core.domain.entity.SysRole;
 import top.rocyuan.common.core.domain.model.LoginUser;
 import top.rocyuan.common.utils.SecurityUtils;
 import top.rocyuan.common.utils.StringUtils;
+import top.rocyuan.framework.security.context.PermissionContextHolder;
 
 /**
  * Roc首创 自定义权限实现，ss取自SpringSecurity首字母
@@ -16,16 +18,6 @@ import top.rocyuan.common.utils.StringUtils;
 @Service("ss")
 public class PermissionService
 {
-    /** 所有权限标识 */
-    private static final String ALL_PERMISSION = "*:*:*";
-
-    /** 管理员角色权限标识 */
-    private static final String SUPER_ADMIN = "admin";
-
-    private static final String ROLE_DELIMETER = ",";
-
-    private static final String PERMISSION_DELIMETER = ",";
-
     /**
      * 验证用户是否具备某权限
      * 
@@ -43,6 +35,7 @@ public class PermissionService
         {
             return false;
         }
+        PermissionContextHolder.setContext(permission);
         return hasPermissions(loginUser.getPermissions(), permission);
     }
 
@@ -60,7 +53,7 @@ public class PermissionService
     /**
      * 验证用户是否具有以下任意一个权限
      *
-     * @param permissions 以 PERMISSION_NAMES_DELIMETER 为分隔符的权限列表
+     * @param permissions 以 PERMISSION_DELIMETER 为分隔符的权限列表
      * @return 用户是否具有以下任意一个权限
      */
     public boolean hasAnyPermi(String permissions)
@@ -74,8 +67,9 @@ public class PermissionService
         {
             return false;
         }
+        PermissionContextHolder.setContext(permissions);
         Set<String> authorities = loginUser.getPermissions();
-        for (String permission : permissions.split(PERMISSION_DELIMETER))
+        for (String permission : permissions.split(Constants.PERMISSION_DELIMETER))
         {
             if (permission != null && hasPermissions(authorities, permission))
             {
@@ -105,7 +99,7 @@ public class PermissionService
         for (SysRole sysRole : loginUser.getUser().getRoles())
         {
             String roleKey = sysRole.getRoleKey();
-            if (SUPER_ADMIN.equals(roleKey) || roleKey.equals(StringUtils.trim(role)))
+            if (Constants.SUPER_ADMIN.equals(roleKey) || roleKey.equals(StringUtils.trim(role)))
             {
                 return true;
             }
@@ -141,7 +135,7 @@ public class PermissionService
         {
             return false;
         }
-        for (String role : roles.split(ROLE_DELIMETER))
+        for (String role : roles.split(Constants.ROLE_DELIMETER))
         {
             if (hasRole(role))
             {
@@ -160,6 +154,6 @@ public class PermissionService
      */
     private boolean hasPermissions(Set<String> permissions, String permission)
     {
-        return permissions.contains(ALL_PERMISSION) || permissions.contains(StringUtils.trim(permission));
+        return permissions.contains(Constants.ALL_PERMISSION) || permissions.contains(StringUtils.trim(permission));
     }
 }

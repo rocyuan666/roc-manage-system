@@ -22,7 +22,7 @@ public class SysUser extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 用户ID */
-    @Excel(name = "用户序号", cellType = ColumnType.NUMERIC, prompt = "用户编号")
+    @Excel(name = "用户序号", type = Type.EXPORT, cellType = ColumnType.NUMERIC, prompt = "用户编号")
     private Long userId;
 
     /** 部门ID */
@@ -42,8 +42,8 @@ public class SysUser extends BaseEntity
     private String email;
 
     /** 手机号码 */
-    @Excel(name = "手机号码")
-    private String phonenumber;
+    @Excel(name = "手机号码", cellType = ColumnType.TEXT)
+    private String phoneNumber;
 
     /** 用户性别 */
     @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
@@ -167,14 +167,14 @@ public class SysUser extends BaseEntity
     }
 
     @Size(min = 0, max = 11, message = "手机号码长度不能超过11个字符")
-    public String getPhonenumber()
+    public String getPhoneNumber()
     {
-        return phonenumber;
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber)
+    public void setPhoneNumber(String phoneNumber)
     {
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getSex()
@@ -305,7 +305,7 @@ public class SysUser extends BaseEntity
             .append("userName", getUserName())
             .append("nickName", getNickName())
             .append("email", getEmail())
-            .append("phonenumber", getPhonenumber())
+            .append("phoneNumber", getPhoneNumber())
             .append("sex", getSex())
             .append("avatar", getAvatar())
             .append("password", getPassword())

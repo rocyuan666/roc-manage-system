@@ -1,6 +1,6 @@
 @echo off
 echo.
-echo [信息] 清理工程target生成路径。
+echo [锟斤拷息] 锟斤拷锟斤拷锟斤拷target锟斤拷锟斤拷路锟斤拷锟斤拷
 echo.
 
 %~d0

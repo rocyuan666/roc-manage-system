@@ -41,6 +41,9 @@ public class GenTable extends BaseEntity
     /** 使用的模板（crud单表操作 tree树表操作 sub主子表操作） */
     private String tplCategory;
 
+    /** 前端类型（element-ui模版 element-plus模版） */
+    private String tplWebType;
+
     /** 生成包路径 */
     @NotBlank(message = "生成包路径不能为空")
     private String packageName;
@@ -90,7 +93,7 @@ public class GenTable extends BaseEntity
     private String treeName;
 
     /** 上级菜单ID字段 */
-    private String parentMenuId;
+    private Long parentMenuId;
 
     /** 上级菜单名称字段 */
     private String parentMenuName;
@@ -163,6 +166,16 @@ public class GenTable extends BaseEntity
     public void setTplCategory(String tplCategory)
     {
         this.tplCategory = tplCategory;
+    }
+
+    public String getTplWebType()
+    {
+        return tplWebType;
+    }
+
+    public void setTplWebType(String tplWebType)
+    {
+        this.tplWebType = tplWebType;
     }
 
     public String getPackageName()
@@ -305,12 +318,12 @@ public class GenTable extends BaseEntity
         this.treeName = treeName;
     }
 
-    public String getParentMenuId()
+    public Long getParentMenuId()
     {
         return parentMenuId;
     }
 
-    public void setParentMenuId(String parentMenuId)
+    public void setParentMenuId(Long parentMenuId)
     {
         this.parentMenuId = parentMenuId;
     }

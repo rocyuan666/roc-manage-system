@@ -1,6 +1,6 @@
 {
   "name": "roc-manage-system",
-  "version": "1.0.0",
+  "version": "3.8.9",
   "author": "rocyuan",
   "description": "大鹏管理系统",
   "main": "index.js",

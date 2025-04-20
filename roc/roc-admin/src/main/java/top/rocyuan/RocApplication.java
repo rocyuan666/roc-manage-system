@@ -16,6 +16,6 @@ public class RocApplication
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(RocApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  大鹏管理系统启动成功   ლ(´ڡ`ლ)ﾞ");
+        System.out.println("(♥◠‿◠)ﾉﾞ  大鹏管理平台启动成功   ლ(´ڡ`ლ)ﾞ  ");
     }
 }

@@ -1,19 +1,16 @@
 <p align="center">
-	<img alt="logo" src="https://luojing.top/rocyuan/images/roc-manage-system-logo.png">
+	<img alt="logo" src="https://rocyuan.top/img/rocyuan.jpg">
 </p>
 <h1 align="center" style="margin: 10px 0 30px; font-weight: bold;">roc-manage-system</h1>
 
 ## 平台简介
 
-大鹏管理系统，基于若依前后端分离管理系统的开发框架。
-
-[github](https://github.com/rocyuan666/roc-manage-system) 与 [gitee](https://gitee.com/rocyuan666/roc-manage-system)，两仓库同步提交。
+大鹏管理系统，基于若依前后端分离管理系统修改的框架。
 
 ## 目录
-* roc: java后端项目代码
-* roc-vue： vue项目代码
-* roc-vue3： vue3项目代码
-* roc-uniapp： uni-app项目代码（正在开发...）
+* roc：java后端代码
+* roc-ui：vue3代码
+* roc-mobile：uni-app代码
 * script：脚本工具
 
 ## 内置功能

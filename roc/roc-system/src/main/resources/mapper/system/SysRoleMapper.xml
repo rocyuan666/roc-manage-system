@@ -46,10 +46,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND r.role_key like concat('%', #{roleKey}, '%')
 		</if>
 		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
-			and date_format(r.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+			and date_format(r.create_time,'%Y%m%d') &gt;= date_format(#{params.beginTime},'%Y%m%d')
 		</if>
 		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
-			and date_format(r.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+			and date_format(r.create_time,'%Y%m%d') &lt;= date_format(#{params.endTime},'%Y%m%d')
 		</if>
 		<!-- 数据范围过滤 -->
 		${params.dataScope}
@@ -85,12 +85,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="checkRoleNameUnique" parameterType="String" resultMap="SysRoleResult">
 		<include refid="selectRoleVo"/>
-		 where r.role_name=#{roleName} limit 1
+		 where r.role_name=#{roleName} and r.del_flag = '0' limit 1
 	</select>
 	
 	<select id="checkRoleKeyUnique" parameterType="String" resultMap="SysRoleResult">
 		<include refid="selectRoleVo"/>
-		 where r.role_key=#{roleKey} limit 1
+		 where r.role_key=#{roleKey} and r.del_flag = '0' limit 1
 	</select>
 	
  	<insert id="insertRole" parameterType="SysRole" useGeneratedKeys="true" keyProperty="roleId">
@@ -98,7 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="roleId != null and roleId != 0">role_id,</if>
  			<if test="roleName != null and roleName != ''">role_name,</if>
  			<if test="roleKey != null and roleKey != ''">role_key,</if>
- 			<if test="roleSort != null and roleSort != ''">role_sort,</if>
+ 			<if test="roleSort != null">role_sort,</if>
  			<if test="dataScope != null and dataScope != ''">data_scope,</if>
  			<if test="menuCheckStrictly != null">menu_check_strictly,</if>
  			<if test="deptCheckStrictly != null">dept_check_strictly,</if>
@@ -110,7 +110,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="roleId != null and roleId != 0">#{roleId},</if>
  			<if test="roleName != null and roleName != ''">#{roleName},</if>
  			<if test="roleKey != null and roleKey != ''">#{roleKey},</if>
- 			<if test="roleSort != null and roleSort != ''">#{roleSort},</if>
+ 			<if test="roleSort != null">#{roleSort},</if>
  			<if test="dataScope != null and dataScope != ''">#{dataScope},</if>
  			<if test="menuCheckStrictly != null">#{menuCheckStrictly},</if>
  			<if test="deptCheckStrictly != null">#{deptCheckStrictly},</if>
@@ -126,7 +126,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<set>
  			<if test="roleName != null and roleName != ''">role_name = #{roleName},</if>
  			<if test="roleKey != null and roleKey != ''">role_key = #{roleKey},</if>
- 			<if test="roleSort != null and roleSort != ''">role_sort = #{roleSort},</if>
+ 			<if test="roleSort != null">role_sort = #{roleSort},</if>
  			<if test="dataScope != null and dataScope != ''">data_scope = #{dataScope},</if>
  			<if test="menuCheckStrictly != null">menu_check_strictly = #{menuCheckStrictly},</if>
  			<if test="deptCheckStrictly != null">dept_check_strictly = #{deptCheckStrictly},</if>
@@ -139,7 +139,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<delete id="deleteRoleById" parameterType="Long">
-		update sys_role set del_flag = '2' where role_id = #{roleId}
+ 		update sys_role set del_flag = '2' where role_id = #{roleId}
  	</delete>
  	
  	<delete id="deleteRoleByIds" parameterType="Long">

@@ -215,7 +215,7 @@ public class GenUtils
      */
     public static String replaceText(String text)
     {
-        return RegExUtils.replaceAll(text, "(?:表|大鹏管理系统)", "");
+        return RegExUtils.replaceAll(text, "(?:表|大鹏管理平台)", "");
     }
 
     /**

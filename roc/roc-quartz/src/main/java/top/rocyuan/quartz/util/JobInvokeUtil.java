@@ -34,7 +34,7 @@ public class JobInvokeUtil
         }
         else
         {
-            Object bean = Class.forName(beanName).newInstance();
+            Object bean = Class.forName(beanName).getDeclaredConstructor().newInstance();
             invokeMethod(bean, methodName, methodParams);
         }
     }
@@ -52,12 +52,12 @@ public class JobInvokeUtil
     {
         if (StringUtils.isNotNull(methodParams) && methodParams.size() > 0)
         {
-            Method method = bean.getClass().getDeclaredMethod(methodName, getMethodParamsType(methodParams));
+            Method method = bean.getClass().getMethod(methodName, getMethodParamsType(methodParams));
             method.invoke(bean, getMethodParamsValue(methodParams));
         }
         else
         {
-            Method method = bean.getClass().getDeclaredMethod(methodName);
+            Method method = bean.getClass().getMethod(methodName);
             method.invoke(bean);
         }
     }
@@ -105,7 +105,7 @@ public class JobInvokeUtil
      */
     public static List<Object[]> getMethodParams(String invokeTarget)
     {
-        String methodStr = StringUtils.substringBetween(invokeTarget, "(", ")");
+        String methodStr = StringUtils.substringBetweenLast(invokeTarget, "(", ")");
         if (StringUtils.isEmpty(methodStr))
         {
             return null;

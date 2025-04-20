@@ -10,9 +10,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import com.alibaba.fastjson2.JSON;
 import top.rocyuan.common.constant.Constants;
-import top.rocyuan.common.constant.HttpStatus;
 import top.rocyuan.common.core.domain.AjaxResult;
 import top.rocyuan.common.core.domain.model.LoginUser;
+import top.rocyuan.common.utils.MessageUtils;
 import top.rocyuan.common.utils.ServletUtils;
 import top.rocyuan.common.utils.StringUtils;
 import top.rocyuan.framework.manager.AsyncManager;
@@ -46,8 +46,8 @@ public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler
             // 删除用户缓存记录
             tokenService.delLoginUser(loginUser.getToken());
             // 记录用户退出日志
-            AsyncManager.me().execute(AsyncFactory.recordLogininfor(userName, Constants.LOGOUT, "退出成功"));
+            AsyncManager.me().execute(AsyncFactory.recordLogininfor(userName, Constants.LOGOUT, MessageUtils.message("user.logout.success")));
         }
-        ServletUtils.renderString(response, JSON.toJSONString(AjaxResult.error(HttpStatus.SUCCESS, "退出成功")));
+        ServletUtils.renderString(response, JSON.toJSONString(AjaxResult.success(MessageUtils.message("user.logout.success"))));
     }
 }

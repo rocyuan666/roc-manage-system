@@ -27,7 +27,6 @@ import top.rocyuan.common.constant.Constants;
 import top.rocyuan.common.constant.GenConstants;
 import top.rocyuan.common.core.text.CharsetKit;
 import top.rocyuan.common.exception.ServiceException;
-import top.rocyuan.common.utils.SecurityUtils;
 import top.rocyuan.common.utils.StringUtils;
 import top.rocyuan.generator.domain.GenTable;
 import top.rocyuan.generator.domain.GenTableColumn;
@@ -129,9 +128,9 @@ public class GenTableServiceImpl implements IGenTableService
         int row = genTableMapper.updateGenTable(genTable);
         if (row > 0)
         {
-            for (GenTableColumn cenTableColumn : genTable.getColumns())
+            for (GenTableColumn genTableColumn : genTable.getColumns())
             {
-                genTableColumnMapper.updateGenTableColumn(cenTableColumn);
+                genTableColumnMapper.updateGenTableColumn(genTableColumn);
             }
         }
     }
@@ -151,15 +150,26 @@ public class GenTableServiceImpl implements IGenTableService
     }
 
     /**
+     * 创建表
+     *
+     * @param sql 创建表语句
+     * @return 结果
+     */
+    @Override
+    public boolean createTable(String sql)
+    {
+        return genTableMapper.createTable(sql) == 0;
+    }
+
+    /**
      * 导入表结构
      * 
      * @param tableList 导入表列表
      */
     @Override
     @Transactional
-    public void importGenTable(List<GenTable> tableList)
+    public void importGenTable(List<GenTable> tableList, String operName)
     {
-        String operName = SecurityUtils.getUsername();
         try
         {
             for (GenTable table : tableList)
@@ -206,7 +216,7 @@ public class GenTableServiceImpl implements IGenTableService
         VelocityContext context = VelocityUtils.prepareContext(table);
 
         // 获取模板列表
-        List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory());
+        List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory(), table.getTplWebType());
         for (String template : templates)
         {
             // 渲染模板
@@ -254,7 +264,7 @@ public class GenTableServiceImpl implements IGenTableService
         VelocityContext context = VelocityUtils.prepareContext(table);
 
         // 获取模板列表
-        List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory());
+        List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory(), table.getTplWebType());
         for (String template : templates)
         {
             if (!StringUtils.containsAny(template, "sql.vm", "api.js.vm", "index.vue.vm", "index-tree.vue.vm"))
@@ -367,7 +377,7 @@ public class GenTableServiceImpl implements IGenTableService
         VelocityContext context = VelocityUtils.prepareContext(table);
 
         // 获取模板列表
-        List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory());
+        List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory(), table.getTplWebType());
         for (String template : templates)
         {
             // 渲染模板
@@ -414,16 +424,16 @@ public class GenTableServiceImpl implements IGenTableService
             {
                 throw new ServiceException("树名称字段不能为空");
             }
-            else if (GenConstants.TPL_SUB.equals(genTable.getTplCategory()))
+        }
+        else if (GenConstants.TPL_SUB.equals(genTable.getTplCategory()))
+        {
+            if (StringUtils.isEmpty(genTable.getSubTableName()))
             {
-                if (StringUtils.isEmpty(genTable.getSubTableName()))
-                {
-                    throw new ServiceException("关联子表的表名不能为空");
-                }
-                else if (StringUtils.isEmpty(genTable.getSubTableFkName()))
-                {
-                    throw new ServiceException("子表关联的外键名不能为空");
-                }
+                throw new ServiceException("关联子表的表名不能为空");
+            }
+            else if (StringUtils.isEmpty(genTable.getSubTableFkName()))
+            {
+                throw new ServiceException("子表关联的外键名不能为空");
             }
         }
     }
@@ -491,7 +501,7 @@ public class GenTableServiceImpl implements IGenTableService
             String treeCode = paramsObj.getString(GenConstants.TREE_CODE);
             String treeParentCode = paramsObj.getString(GenConstants.TREE_PARENT_CODE);
             String treeName = paramsObj.getString(GenConstants.TREE_NAME);
-            String parentMenuId = paramsObj.getString(GenConstants.PARENT_MENU_ID);
+            Long parentMenuId = paramsObj.getLongValue(GenConstants.PARENT_MENU_ID);
             String parentMenuName = paramsObj.getString(GenConstants.PARENT_MENU_NAME);
 
             genTable.setTreeCode(treeCode);
