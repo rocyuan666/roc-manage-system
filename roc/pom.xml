@@ -228,6 +228,7 @@
         <module>roc-quartz</module>
         <module>roc-generator</module>
         <module>roc-common</module>
+        <module>roc-api</module>
     </modules>
     <packaging>pom</packaging>
 
